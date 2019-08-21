@@ -1,15 +1,7 @@
-const express = require('express');
-const helmet = require('helmet');
-const cors = require('cors');
-const server = express();
+require('dotenv').config()
 
-server.use(helmet());
-server.use(express.json());
-server.use(cors());
-
-server.get('/', (req, res) => {
-  res.status(200).json({ message: 'Workout Tracker API' });
-});
+const server = require('./api/server')
 
 const port = process.env.PORT || 5000;
+
 server.listen(port, console.log(`Listening on Port ${port}`));
