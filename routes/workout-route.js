@@ -25,7 +25,7 @@ router.get("/workouts/:id", async (req, res) => {
   }
 });
 
-router.delete('/workout/:id' , (req, res) => {
+router.delete('/workouts/:id' , (req, res) => {
   const { id } = req.params
 
   const deleteWorkout = await Workout.deleteWorkoutById(id);
