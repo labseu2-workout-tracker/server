@@ -25,4 +25,19 @@ router.get("/exercises/:id", async (req, res) => {
   }
 });
 
+router.delete('/exercises/:id' , (req, res) => {
+  const { id } = req.params
+
+  const deleteExercise = await Exercise.deleteExerciseById(id);
+  try {
+    if (deleteExercise) {
+      res.status(200).json({ message: "Exercise got deleted !"});
+    } else {
+      res.status(400).json({ message: 'invalid Id !' })
+    }
+  } catch (error) {
+    res.status(500).json({ errorMessage: `Request couldn't be processed !` })
+  }
+});
+
   module.exports = router;
