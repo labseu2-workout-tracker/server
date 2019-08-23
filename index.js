@@ -4,10 +4,16 @@ const cors = require('cors');
 
 const server = express();
 
+// Import exercise route
+const exerciseRouter = require('./routes/exercises/exercise-routes');
+
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
+
+// Use imported exercise route
+server.use('/exercises', exerciseRouter);
 
 server.get('/', (req, res) => {
   res.status(200).json({ message: 'Workout Tracker API' });
