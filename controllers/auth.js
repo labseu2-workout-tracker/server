@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator/check')
+const { validationResult } = require('express-validator/check');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
@@ -18,12 +18,14 @@ exports.signup = (req, res, next) => {
       const credentials = {
         username: username,
         email: email,
-        password: hashedPw
-      }
+        password: hashedPw,
+      };
       return User.createUser(credentials);
     })
     .then(result => {
-      res.status(201).json({message: 'User created', userId: result.id});
+      res
+        .status(201)
+        .json({ message: 'User created', userId: result.id });
     })
     .catch(err => {
       if (!err.statusCode) {
@@ -39,7 +41,9 @@ exports.login = (req, res, next) => {
   User.findByFilter({ email: email })
     .then(user => {
       if (!user) {
-        const error = new Error('A user with this email could not be found');
+        const error = new Error(
+          'A user with this email could not be found',
+        );
         error.statusCode = 401;
         throw error;
       }
@@ -55,10 +59,10 @@ exports.login = (req, res, next) => {
       const token = jwt.sign(
         {
           email: loadedUser.email,
-          userId: loadedUser.id
+          userId: loadedUser.id,
         },
         'JWT SECRET',
-        { expiresIn: '24h' }
+        { expiresIn: '24h' },
       );
       res.status(200).json({ token: token, userId: loadedUser.id });
     })
