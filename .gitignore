@@ -61,5 +61,8 @@ typings/
 .next
 
 # avoid conflicts between package-lock.json and yarn.lock
-.package-lock.json
+package-lock.json
 yarn.lock
+
+# ignore sqlite3 database
+*.db3
