@@ -4,8 +4,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "cross-env DB_ENV=testing jest --watch --verbose",
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "test": "cross-env DB_ENV=testing jest --watch --verbose"
+  },
+  "jest": {
+    "testEnvirnoment": "node"
   },
   "repository": "https://github.com/labseu2-workout-tracker/server.git",
   "author": "shaunmcarmody <shaun.carmody@live.co.uk>",

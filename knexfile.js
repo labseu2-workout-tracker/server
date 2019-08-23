@@ -3,7 +3,7 @@ require('dotenv').config(); // load .env variables
 module.exports = {
   development: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: process.env.DATABASE_DEV,
     useNullAsDefault: true, // used to avoid warning on console
     migrations: {
       directory: './models/migrations',
@@ -13,14 +13,14 @@ module.exports = {
   },
   testing: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: process.env.DATABASE_TEST,
     useNullAsDefault: true,
     migrations: {
       directory: './models/migrations',
       tableName: 'dbmigrations',
     },
     seeds: {
-      directory: './models/seeds',
+      directory: './models/seeds/test',
     },
   },
   production: {
