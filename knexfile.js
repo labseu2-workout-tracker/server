@@ -20,7 +20,7 @@ module.exports = {
       tableName: 'dbmigrations',
     },
     seeds: {
-      directory: './models/seeds/test',
+      directory: './models/seeds',
     },
   },
   production: {
