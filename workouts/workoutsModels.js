@@ -14,4 +14,5 @@ function getWorkouts() {
 module.exports = {
   getWorkouts,
   getWorkoutExercises,
+  getWorkouts,
 };
