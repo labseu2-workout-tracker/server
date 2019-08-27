@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const DB = require('./workoutsModels');
-const checkLoggedIn = require('../middleware/restrictedMiddleware');
+const checkLoggedIn = require('../middlewares/restrictedMiddleware');
 
 router.get('/:id', async (req, res) => {
   try {
