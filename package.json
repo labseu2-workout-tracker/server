@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
-    "test": "cross-env DB_ENV=testing jest --watch --verbose"
+    "test": "cross-env DB_ENV=testing jest --watch --verbose",
+    "createQueries": "psql -U postgres -f query.sql"
   },
   "jest": {
     "testEnvirnoment": "node"
