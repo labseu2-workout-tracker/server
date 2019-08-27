@@ -8,7 +8,7 @@ exports.seed = function(knex) {
         {
            id: 1,
            workout_name: 'Squats',
-           workout_description: 'the best workout for logs',
+           workout_description: 'the best workout for legs',
            image_url:'https://i.postimg.cc/bvLZzGrP/squats.jpg',
            user_id:1
           }
