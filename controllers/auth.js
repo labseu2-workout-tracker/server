@@ -16,8 +16,8 @@ exports.signup = (req, res, next) => {
     .hash(password, 12)
     .then(hashedPw => {
       const credentials = {
-        username: username,
-        email: email,
+        username,
+        email,
         password: hashedPw,
       };
       return User.createUser(credentials);
@@ -38,7 +38,7 @@ exports.signup = (req, res, next) => {
 exports.login = (req, res, next) => {
   const { email, password } = req.body;
   let loadedUser;
-  User.findByFilter({ email: email })
+  User.findByFilter({ email })
     .then(user => {
       if (!user) {
         const error = new Error(
@@ -64,7 +64,7 @@ exports.login = (req, res, next) => {
         'JWT SECRET',
         { expiresIn: '24h' },
       );
-      res.status(200).json({ token: token, userId: loadedUser.id });
+      res.status(200).json({ token, userId: loadedUser.id });
     })
     .catch(err => {
       if (!err.statusCode) {
