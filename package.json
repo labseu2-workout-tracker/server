@@ -8,7 +8,7 @@
     "test": "cross-env DB_ENV=testing jest --verbose --forceExit"
   },
   "jest": {
-    "testEnvirnoment": "node"
+    "testEnvironment": "node"
   },
   "repository": "https://github.com/labseu2-workout-tracker/server.git",
   "author": "shaunmcarmody <shaun.carmody@live.co.uk>",
