@@ -24,6 +24,7 @@ server.get('/', (req, res) => {
 });
 
 const port = process.env.PORT || 5000;
+// server.listen(port, console.log(`Listening on Port ${port}`));
 
 /* 
   With respect to listen EADDRINUSE :::5000 error returned when testing
