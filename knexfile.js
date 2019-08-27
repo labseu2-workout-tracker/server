@@ -13,14 +13,14 @@ module.exports = {
   },
   testing: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: process.env.DATABASE_TEST,
     useNullAsDefault: true,
     migrations: {
       directory: './models/migrations',
       tableName: 'dbmigrations',
     },
     seeds: {
-      directory: './models/seeds',
+      directory: './models/seeds/test',
     },
   },
   production: {
