@@ -104,4 +104,15 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/', async (req, res) => {
+  try {
+    const workouts = await DB.getWorkouts();
+    return res.status(200).json(workouts);
+  } catch (error) {
+    return res.status(500).json({
+      Error: error,
+    });
+  }
+});
+
 module.exports = router;
