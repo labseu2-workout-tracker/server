@@ -17,10 +17,7 @@ INSERT into "workouts-exercises" (exercise_id, workout_id) VALUES (579, 1);
 INSERT into "workouts-exercises" (exercise_id, workout_id) VALUES (611, 1);
 INSERT into "workouts-exercises" (exercise_id, workout_id) VALUES (540, 1);
 INSERT into "workouts-exercises" (exercise_id, workout_id) VALUES (538, 1);
-<<<<<<< HEAD
-=======
 */
->>>>>>> Add sql file
 
 INSERT INTO sets (workout_exercise_id, reps) values (1, 10);
 INSERT INTO sets (workout_exercise_id, reps) values (1, 11);
