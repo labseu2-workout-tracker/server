@@ -1,11 +1,11 @@
 const express = require('express');
 const { body } = require('express-validator/check');
+
 const User = require('./usersModels');
 const usersControllers = require('./usersControllers');
-
 const router = express.Router();
 
-router.put(
+router.post(
   '/signup',
   [
     body('email')
@@ -31,3 +31,5 @@ router.put(
 );
 
 router.post('/login', usersControllers.login);
+
+module.exports = router;
