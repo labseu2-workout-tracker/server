@@ -6,14 +6,21 @@ const findBy = filter => {
     .first();
 };
 
+const findById = id => {
+  return db('users')
+    .where({ id })
+    .first();
+};
+
 const createUser = async user => {
   const [id] = await db('users')
     .insert(user)
     .returning('id');
-  return findBy(id);
+  return findById(id);
 };
 
 module.exports = {
   findBy,
   createUser,
+  findById,
 };
