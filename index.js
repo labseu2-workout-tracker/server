@@ -2,7 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 
-const authRoutes = require('./routes/auth')
+const usersRoutes = require('./users/usersRoutes');
 
 const server = express();
 
@@ -12,16 +12,19 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
 server.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(
-    "Access-Controll-Allow-Methods",
-    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+    'Access-Controll-Allow-Methods',
+    'OPTIONS, GET, POST, PUT, PATCH, DELETE',
   );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization',
+  );
   next();
 });
 
-server.use('/auth', authRoutes)
+server.use('/api/auth', usersRoutes);
 
 server.get('/api', (req, res) => {
   res.status(200).json({ message: 'Workout Tracker API' });

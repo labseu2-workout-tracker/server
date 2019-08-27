@@ -38,7 +38,7 @@ exports.signup = (req, res, next) => {
 exports.login = (req, res, next) => {
   const { email, password } = req.body;
   let loadedUser;
-  User.findByFilter({ email })
+  User.findBy({ email })
     .then(user => {
       if (!user) {
         const error = new Error(
