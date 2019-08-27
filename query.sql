@@ -1,11 +1,17 @@
-\c workout_tracker_test
+\c workout_tracker
 
 
 
 /*
+<<<<<<< HEAD
 INSERT INTO users (username, password, email, gender, weight, height) VALUES ('sherlock', 'infiltrate', 'sherlock@example.com', 'male', '124', 6.7);
 INSERT INTO users (username, password, email, gender, weight, height) VALUES ('watson', 'infiltrate', 'watson@example.com', 'male', '80', 5.2);
 */
+=======
+INSERT INTO users (username, password, email, gender, weight, height) VALUES ('1', 'infiltrate', 'highdee1@example.com', 'female', '124', 6.7);
+INSERT INTO users (username, password, email, gender, weight, height) VALUES ('macron1', 'infiltrate', 'macron1@example.com', 'male', '80', 5.2);
+
+>>>>>>> Add sql file
 INSERT INTO workouts (workout_name, workout_description, user_id) VALUES ('Triceps, Biceps and Calves', 'Workout for the muscle of the arm and calves', 1);
 
 
@@ -17,6 +23,10 @@ INSERT into "workouts-exercises" (exercise_id, workout_id) VALUES (579, 1);
 INSERT into "workouts-exercises" (exercise_id, workout_id) VALUES (611, 1);
 INSERT into "workouts-exercises" (exercise_id, workout_id) VALUES (540, 1);
 INSERT into "workouts-exercises" (exercise_id, workout_id) VALUES (538, 1);
+<<<<<<< HEAD
+=======
+*/
+>>>>>>> Add sql file
 
 INSERT INTO sets (workout_exercise_id, reps) values (1, 10);
 INSERT INTO sets (workout_exercise_id, reps) values (1, 11);
