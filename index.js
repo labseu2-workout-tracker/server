@@ -4,10 +4,15 @@ const cors = require('cors');
 
 const server = express();
 
+const workout_route = require('./workouts/workoutsRoutes')
+
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
+server.use('/api', workout_route)
+
+
 
 server.get('/api', (req, res) => {
   res.status(200).json({ message: 'Workout Tracker API' });
