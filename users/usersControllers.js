@@ -2,30 +2,32 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('./usersModels');
 
-exports.signup = (req, res, next) => {
-  const { email, username, password } = req.body;
-  bcrypt
-    .hash(password, 12)
-    .then(hashedPw => {
-      const credentials = {
-        username,
-        email,
-        password: hashedPw,
-      };
-      return User.createUser(credentials);
-    })
-    .then(result => {
-      console.log('result', result);
+exports.signup = async (req, res, next) => {
+  try {
+    const { email, username, password } = req.body;
+    hashedPw = await bcrypt.hash(password, 12);
+    const credentials = {
+      username,
+      email,
+      password: hashedPw,
+    };
+    const user = await User.findBy({ email: credentials.email });
+    if (user) {
+      res.status(409).json({
+        message: 'Oops, user already exists',
+      });
+    } else {
+      const newUser = await User.createUser(credentials);
       res
         .status(201)
-        .json({ message: 'User created', id: result.id });
-    })
-    .catch(err => {
-      if (!err.statusCode) {
-        err.statusCode = 500;
-      }
-      next(err);
+        .json({ message: 'User creted', newUser: newUser.id });
+    }
+  } catch (error) {
+    res.status(500).json({
+      message: 'Oops, something went wrong while registering',
+      error,
     });
+  }
 };
 
 exports.login = async (req, res, next) => {
