@@ -6,21 +6,21 @@ module.exports = {
     connection: process.env.DATABASE_DEV,
     useNullAsDefault: true, // used to avoid warning on console
     migrations: {
-      directory: './models/migrations',
+      directory: './data/migrations',
       tableName: 'dbmigrations',
     },
-    seeds: { directory: './models/seeds' },
+    seeds: { directory: './data/seeds' },
   },
   testing: {
     client: 'pg',
     connection: process.env.DATABASE_TEST,
     useNullAsDefault: true,
     migrations: {
-      directory: './models/migrations',
+      directory: './data/migrations',
       tableName: 'dbmigrations',
     },
     seeds: {
-      directory: './models/seeds/test',
+      directory: './data/seeds/test',
     },
   },
   production: {
@@ -28,11 +28,11 @@ module.exports = {
     connection: process.env.DATABASE_URL,
     useNullAsDefault: true,
     migrations: {
-      directory: './models/migrations',
+      directory: './data/migrations',
       tableName: 'dbmigrations',
     },
     seeds: {
-      directory: './models/seeds',
+      directory: './data/seeds',
     },
   },
 };
