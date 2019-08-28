@@ -11,19 +11,6 @@ server.use(cors());
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
-server.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader(
-    'Access-Controll-Allow-Methods',
-    'OPTIONS, GET, POST, PUT, PATCH, DELETE',
-  );
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Content-Type, Authorization',
-  );
-  next();
-});
-
 server.use('/api/auth', usersRoutes);
 
 server.get('/api', (req, res) => {
