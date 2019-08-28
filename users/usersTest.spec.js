@@ -10,7 +10,7 @@ describe('authentication', () => {
   });
   it('should return a status 200 when a user signs up', () => {
     return request(server)
-      .post('/api/auth/signup')
+      .post('/auth/signup')
       .send({
         username: 'Bar',
         email: 'foobaz@gmail.com',
@@ -24,7 +24,7 @@ describe('authentication', () => {
   });
   it('should return a status 409 when a user signs up with existing credentials', () => {
     return request(server)
-      .post('/api/auth/signup')
+      .post('/auth/signup')
       .send({
         username: 'Bar',
         email: 'foobaz@gmail.com',
@@ -38,7 +38,7 @@ describe('authentication', () => {
   });
   it('should return a status 400 when a user signs up with an invalid email', () => {
     return request(server)
-      .post('/api/auth/signup')
+      .post('/auth/signup')
       .send({
         username: 'Bar',
         email: 'foobaz',
@@ -52,7 +52,7 @@ describe('authentication', () => {
   });
   it('should return a status 200 when a user logs in', () => {
     return request(server)
-      .post('/api/auth/login')
+      .post('/auth/login')
       .send({ email: 'foobaz@gmail.com', password: '123456' })
       .expect(200)
       .expect('Content-Type', /json/)
@@ -62,7 +62,7 @@ describe('authentication', () => {
   });
   it('should return a status 401 when a user provides invalid credentials', () => {
     return request(server)
-      .post('/api/auth/login')
+      .post('/auth/login')
       .send({ email: 'fooba@gmail.com', password: '1' })
       .expect(401)
       .expect('Content-Type', /json/)
