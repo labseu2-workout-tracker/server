@@ -4,7 +4,7 @@ const server = require('../index');
 describe('index file', () => {
   it('should return a message when the server is up', () => {
     return request(server)
-      .get('/api')
+      .get('/')
       .expect(200)
       .expect('Content-Type', /json/)
       .then(res => {
