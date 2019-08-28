@@ -1,13 +1,12 @@
 const request = require('supertest');
 
-const server = require('../../index');
+const server = require('../index');
 
-describe('exercise-router', () => {
-  describe('/get/exercise/:id', () => {
-    it('should return status code OK 200 from get name route and full exercise response in json format in body', async () => {
-      await request(server)
-        .get('/exercises/500')
-        .expect(200);
-    });
+describe('GET /exercises/:id', () => {
+  it('Should response with 200 status code and json object containing exercise detail in full', async () => {
+    const res = await request(server).get('/exercises/500');
+    expect(res.status).toBe(200);
+    expect(res.type).toBe('application/json');
+    expect(res.body).toBeInstanceOf(Object);
   });
 });
