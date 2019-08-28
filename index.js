@@ -24,6 +24,8 @@ server.get('/', (req, res) => {
 });
 
 const port = process.env.PORT || 5000;
-server.listen(port, console.log(`Listening on Port ${port}`));
 
+if (process.env.NODE_ENV !== 'test') {
+  server.listen(port, console.log(`Listening on Port ${port}`));
+}
 module.exports = server;
