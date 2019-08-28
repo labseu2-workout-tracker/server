@@ -779,3 +779,197 @@ _example:_
 
 
 
+**UPDATE WORKOUT**
+
+**Update individual workout using workout by id**
+
+_Method Url:_ /api/user/workout/:id
+
+_HTTP method:_**[PUT]**
+
+**Headers**
+
+| **name** | **type** | **required** | **description** |
+| --- | --- | --- | --- |
+| Content-Type | String | Yes | Must be application/json |
+| Authorization | String | Yes | JSON Web Token |
+
+**Parameters**
+
+| **name** | **type** | **required** | **description** |
+| --- | --- | --- | --- |
+| id | Integer | Yes | ID of a specific education object |
+
+**Body**
+
+| **name** | **type** | **required** | **description** |
+| --- | --- | --- | --- |
+| workoukID | Integer | Yes | Must match a user&#39;s id in the database |
+| workout\_name | String | Yes | Cannot be an empty field |
+| workout\_description | String | Yes | Cannot be an empty field |
+| image\_url | String | Yes | Cannot be an empty field |
+| created \_at | timestamps | Yes | Cannot be an empty field |
+| updated\_at | timestamps | Yes | Cannot be an empty field |
+
+_example:_
+
+[
+
+  {
+
+&quot;Id&quot;:  &quot;1&quot;
+
+&quot;workout\_name&quot;:&quot;Arms&quot;,
+
+&quot;workout\_description&quot;: &quot;Lorem ipsum arms instead of Abs a certified personal trainer, target all major abdominal muscles. Spending just minutes a day can strengthen your core and tone your abs. The routine&#39;s simple interface, complete with video and timer, allows you to easily follow along and understand each exercise&quot;,
+
+&quot;Image\_url&quot;: &quot;https//something.abs/muscle.png&quot; ,
+
+&quot;created\_at&quot;: &quot;2019/08/22&quot; ,
+
+&quot;updated\_at&quot;: &quot;2019/08/24&quot;,
+
+  },
+
+]
+
+
+
+**Response**
+
+**200 (OK)**
+
+If the workout object with the specified ID in the URL parameters is updated successfully in the database, the endpoint will return an HTTP response with a status code 200 and a body as below.
+
+_example:_
+
+{
+
+  [
+
+  {
+
+&quot;Id&quot;:  &quot;23&quot;
+
+&quot;workout\_name&quot;:&quot;Arms&quot;,
+
+&quot;workout\_description&quot;: &quot;Lorem ipsum arms instead of Abs a certified personal trainer, target all major abdominal muscles. Spending just minutes a day can strengthen your core and tone your abs. The routine&#39;s simple interface, complete with video and timer, allows you to easily follow along and understand each exercise&quot;,
+
+&quot;Image\_url&quot;: &quot;https//something.abs/muscle.png&quot; ,
+
+&quot;created\_at&quot;: &quot;2019/08/22&quot; ,
+
+&quot;updated\_at&quot;: &quot;2019/08/24&quot;,
+
+  },
+
+]
+
+}
+
+
+
+**404 (Not Found)**
+
+If the workout object for the specified id can&#39;t be found in the database, the endpoint will return an HTTP response with a status code 404 and a body as below.
+
+_example:_
+
+{
+
+  &quot;message&quot;: &quot;Oops, doesn&#39;t look like that workout doesnt exists&quot;
+
+}
+
+
+
+**400 (Bad Request)**
+
+If you are missing any of the required field(s), the endpoint will return an HTTP response with a status code 400 and a body as below relating to the missing field(s).
+
+_example:_
+
+{
+
+  &quot;message&quot;: &quot;Please provide a workou\_name&quot;
+
+}
+
+
+
+**500 (Internal Server Error)**
+
+If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below.
+
+_example:_
+
+{
+
+  &quot;message&quot;: &quot;Oops, something went wrong while updating this workout&quot;
+
+}
+
+
+
+**DELETE WORKOUT**
+
+**Delete workout by id**
+
+_Method Url:_ /api/user/workout/:id
+
+_HTTP method:_**[DELETE]**
+
+**Headers**
+
+| **name** | **type** | **required** | **description** |
+| --- | --- | --- | --- |
+| Content-Type | String | Yes | Must be application/json |
+| Authorization | String | Yes | JSON Web Token |
+
+**Parameters**
+
+| **name** | **type** | **required** | **description** |
+| --- | --- | --- | --- |
+| id | Integer | Yes | ID of workout |
+
+**Response**
+
+**200 (OK)**
+
+If the workout object specified ID in the URL parameters is deleted successfully in the database, the endpoint will return an HTTP response with a status code 200 and a body as below.
+
+_example:_
+
+{
+
+  &quot;message&quot;: &quot;Workout successfully deleted&quot;
+
+}
+
+
+
+**404 (Not Found)**
+
+If the Workout object specified ID in the URL parameters is deleted successfully in the database, the endpoint will return an HTTP response with a status code 404 and a body as below.
+
+_example:_
+
+{
+
+  &quot;message&quot;: &quot;Oops, doesn&#39;t look like this workout exists&quot;
+
+}
+
+
+
+**500 (Bad Request)**
+
+If you send in invalid fields, the endpoint will return an HTTP response with a status code 500 and a body as below.
+
+_example:_
+
+{
+
+  &quot;message&quot;: &quot;Oops, something went wrong while deleting this workout&quot;
+
+}
