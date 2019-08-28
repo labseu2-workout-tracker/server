@@ -42,7 +42,7 @@ const validateUser = [
         error: errors.array().map(i => i.msg),
       });
     }
-    next();
+    return next();
   },
 ];
 

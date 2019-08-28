@@ -35,6 +35,11 @@ exports.signup = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    if (!email) {
+      return res
+        .status(400)
+        .json({ message: 'Oops, email is required for login.' });
+    }
     const user = await User.findBy({ email });
     if (user && bcrypt.compare(password, user.password)) {
       return res
@@ -43,7 +48,7 @@ exports.login = async (req, res) => {
     }
     return res
       .status(401)
-      .json({ message: 'Oops, username or password is incorrect' });
+      .json({ message: 'Oops, email or password is incorrect' });
   } catch (err) {
     return res.status(500).json({
       message: 'Oops, something went wrong while loging in',
