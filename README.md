@@ -1,6 +1,24 @@
-# server
+# API documentation
 
-Individual exercise/workout endpoints to be /exercises/:id   or /workouts/:id
-[![Build Status](https://travis-ci.com/labseu2-workout-tracker/server.svg?branch=master)](https://travis-ci.com/labseu2-workout-tracker/server)
+The Apis we using :
 
+Rest API
+
+Endpoint Documentation
+
+- Resource description
+
+Information
+
+- Resource url
+- Methods
+- Parameters
+- Request example
+- Response examples
+- Status and error codes
+- Code sample
+
+Keys to authorize the calls
+
+Make requests via postman to test endpoints
 
