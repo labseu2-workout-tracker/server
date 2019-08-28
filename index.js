@@ -2,6 +2,8 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 
+const usersRoutes = require('./users/usersRoutes');
+
 const server = express();
 
 const workoutRoutes = require('./workouts/workoutsRoutes');
@@ -11,6 +13,8 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
+
+server.use('/auth', usersRoutes);
 
 server.use('/workouts', workoutRoutes);
 server.use('/exercises', exerciseRouter);
