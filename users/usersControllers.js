@@ -2,6 +2,7 @@ require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('./usersModels');
+const { generateToken } = require('./usersHelper');
 
 const secret = process.env.JWT_SECRET || 'default';
 
@@ -23,7 +24,10 @@ exports.signup = async (req, res) => {
       const newUser = await User.createUser(credentials);
       res
         .status(201)
-        .json({ message: 'User created', newUser: newUser.id });
+        .json({
+          message: 'User created',
+          token: generateToken(newUser.email, newUser.id),
+        });
     }
   } catch (error) {
     res.status(500).json({
@@ -38,15 +42,9 @@ exports.login = async (req, res, next) => {
     const { email, password } = req.body;
     const user = await User.findBy({ email });
     if (user && bcrypt.compare(password, user.password)) {
-      const token = await jwt.sign(
-        {
-          email: user.email,
-          userId: user.id,
-        },
-        secret,
-        { expiresIn: '24h' },
-      );
-      return res.status(200).json({ token, userId: user.id });
+      return res
+        .status(200)
+        .json({ token: generateToken(user.email, user.id) });
     } else {
       return res
         .status(401)
