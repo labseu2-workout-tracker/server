@@ -8,6 +8,7 @@ cache:
 env:
   global:
     - DB_ENV=testing
+    - DATABASE_DEV=postgres://cpysnlqqbpwqjf:bcbfbc86cb607c51098522a6da8dbfa8c2b6d5afa6d93b90e3ed839237eab54a@ec2-54-227-245-146.compute-1.amazonaws.com:5432/d35mju09ia8t41
 services:
   - postgresql
 before_script:
