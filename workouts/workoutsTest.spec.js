@@ -17,14 +17,13 @@ describe('Workouts', () => {
   });
 
   describe('[/get] workouts', () => {
-    it('should return all workouts',  () => {
+    it('should return all workouts', () => {
       return request(server)
         .get('/workouts')
         .set('Authorization', `Bearer ${token}`)
         .then(res => {
           expect(res.statusCode).toBe(200);
         });
-      // expect(workouts.statusCode).toBe(200);
     });
   });
 });
