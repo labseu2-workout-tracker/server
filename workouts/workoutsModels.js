@@ -7,9 +7,6 @@ function getWorkoutExercises(id) {
     .where('workout_id', '=', id);
 }
 
-
-
-
 module.exports = {
   getWorkoutExercises,
 };
