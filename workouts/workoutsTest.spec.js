@@ -1,7 +1,6 @@
 const request = require('supertest');
 const server = require('../index');
 
-
 describe('Workouts', () => {
   describe('[/get] workouts', () => {
     it('should return all workouts', async () => {
