@@ -1,8 +1,10 @@
 const express = require('express');
 const usersControllers = require('./usersControllers');
+const { validateUser } = require('./usersHelper');
+
 const router = express.Router();
 
-router.post('/signup', usersControllers.signup);
+router.post('/signup', validateUser, usersControllers.signup);
 
 router.post('/login', usersControllers.login);
 
