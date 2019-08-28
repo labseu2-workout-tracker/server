@@ -16,6 +16,10 @@ server.use(express.urlencoded({ extended: true }));
 server.use('/exercises', exerciseRouter);
 
 server.get('/', (req, res) => {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 983bac2b85b1a6fbe824e3f58083c23df07749a5
   res.status(200).json({ message: 'Workout Tracker API' });
 });
 
