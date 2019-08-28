@@ -1,6 +1,6 @@
 const request = require('supertest');
 
-const server = require('../../index');
+const server = require('../index');
 
 describe('exercise-router', () => {
   describe('/get/exercise/:id', () => {
