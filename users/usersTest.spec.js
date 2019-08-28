@@ -36,7 +36,7 @@ describe('authentication', () => {
         expect(res.status).toEqual(409);
       });
   });
-  it('should return a status 400 when a user signs up with an invalid email', () => {
+  it.skip('should return a status 400 when a user signs up with an invalid email', () => {
     return request(server)
       .post('/auth/signup')
       .send({
