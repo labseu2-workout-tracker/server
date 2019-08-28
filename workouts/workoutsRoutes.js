@@ -1,8 +1,8 @@
 const express = require('express');
 
 const router = express.Router();
-
 const DB = require('./workoutsModels');
+const checkLoggedIn = require('../middleware/restrictedMiddleware');
 
 router.get('/:id', async (req, res) => {
   try {
@@ -13,7 +13,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+router.get('/', checkLoggedIn, async (req, res) => {
   try {
     const workouts = await DB.getWorkouts();
     return res.status(200).json(workouts);
