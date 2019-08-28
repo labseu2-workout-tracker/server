@@ -41,8 +41,7 @@ const validateUser = [
         status: 400,
         error: errors.array().map(i => i.msg),
       });
-    }
-    return next();
+    } else next();
   },
 ];
 
