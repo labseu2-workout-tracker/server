@@ -1,11 +1,11 @@
-\c workout_tracker
+\c workout_tracker_test
 
 
 
-/*
-INSERT INTO users (username, password, email, gender, weight, height) VALUES ('sherlock', 'infiltrate', 'sherlock@example.com', 'male', '124', 6.7);
-INSERT INTO users (username, password, email, gender, weight, height) VALUES ('watson', 'infiltrate', 'watson@example.com', 'male', '80', 5.2);
-*/
+
+INSERT INTO users (username, password, email, gender, weight, height) VALUES ('highdee1', 'infiltrate', 'highdee1@example.com', 'female', '124', 6.7);
+INSERT INTO users (username, password, email, gender, weight, height) VALUES ('macron1', 'infiltrate', 'macron1@example.com', 'male', '80', 5.2);
+
 INSERT INTO workouts (workout_name, workout_description, user_id) VALUES ('Triceps, Biceps and Calves', 'Workout for the muscle of the arm and calves', 1);
 
 
