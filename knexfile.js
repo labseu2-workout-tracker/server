@@ -13,7 +13,7 @@ module.exports = {
   },
   testing: {
     client: 'pg',
-    connection: process.env.DATABASE_TEST,
+    connection: process.env.DATABASE_URL,
     useNullAsDefault: true,
     migrations: {
       directory: './data/migrations',
