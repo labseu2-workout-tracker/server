@@ -1,7 +1,6 @@
 const request = require('supertest');
 const server = require('../index');
 
-
 describe('Workouts', () => {
   describe('[/get] workouts', () => {
     it('should return all workouts', async () => {
@@ -10,20 +9,3 @@ describe('Workouts', () => {
     });
   });
 });
-
-/* 
-describe('Workouts', () => {
-  describe('[/get] workouts', () => {
-    it('should return all workouts', () => {
-      request(server)
-        .get('/workouts')
-        .expect(200)
-        .then(res => {
-          expect(res.body).toBeInstanceOf(Array);
-        });
-    });
-  });
-});
-
-
-*/
