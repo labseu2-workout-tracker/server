@@ -8,11 +8,11 @@ const secret = process.env.JWT_SECRET || 'default';
 exports.signup = async (req, res) => {
   try {
     const { email, username, password } = req.body;
-    hashedPw = await bcrypt.hash(password, 12);
+    const hashedPassword = await bcrypt.hash(password, 12);
     const credentials = {
       username,
       email,
-      password: hashedPw,
+      password: hashedPassword,
     };
     const user = await User.findBy({ email: credentials.email });
     if (user) {
