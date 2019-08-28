@@ -11,7 +11,6 @@ function getWorkouts() {
   return db('workouts');
 }
 
-
 module.exports = {
   getWorkoutExercises,
   getWorkouts,
