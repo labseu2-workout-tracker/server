@@ -6,7 +6,7 @@ const secret = process.env.JWT_SECRET || 'default';
 module.exports = (req, res, next) => {
   const authHeader = req.get('Authorization');
   if (!authHeader) {
-    res.status(400).json({
+    return res.status(400).json({
       message: 'No Token Provided',
     });
   }
@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
   try {
     decodedToken = jwt.verify(token, secret);
   } catch (err) {
-    res.status(401).json({
+    return res.status(401).json({
       message: 'Invalid Token.',
       err,
     });
