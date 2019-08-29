@@ -5,9 +5,10 @@ let token;
 describe('Workouts', () => {
   beforeAll(done => {
     request(server)
-      .post('/auth/login')
+      .post('/auth/signup')
       .send({
-        email: 'foobaz@gmail.com',
+        email: 'montypython@example.com',
+        username: 'montypython',
         password: '123456',
       })
       .end((err, res) => {
