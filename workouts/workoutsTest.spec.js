@@ -17,7 +17,7 @@ describe('Workouts', () => {
   });
 
   describe('[/get] workouts', () => {
-    it('should return all workouts', () => {
+    it('should return 200 and all workouts', () => {
       return request(server)
         .get('/workouts')
         .set('Authorization', `Bearer ${token}`)
@@ -26,4 +26,27 @@ describe('Workouts', () => {
         });
     });
   });
+
+  describe('[/get] workouts', () => {
+    it('should return  400 when token is not provided ', () => {
+      return request(server)
+        .get('/workouts')
+        .then(res => {
+          expect(res.statusCode).toBe(400);
+        });
+    });
+  });
+
+  describe('[/get] workouts', () => {
+    it('should return 401 when invalid token is provided', () => {
+      token = 'mhvhgjbhjkljkn098765754667854565';
+      return request(server)
+        .get('/workouts')
+        .set('Authorization', `Bearer ${token}`)
+        .then(res => {
+          expect(res.statusCode).toBe(401);
+        });
+    });
+  });
+
 });
