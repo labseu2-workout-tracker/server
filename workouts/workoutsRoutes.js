@@ -13,4 +13,13 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.get('/workouthistory/:id', async (req, res) => {
+  try {
+    const exerciseHistory = await DB.getWorkoutHistory(req.params.id);
+    res.status(200).json(exerciseHistory);
+  } catch (error) {
+    res.status(404).json({ Message: 'Workout History not found' });
+  }
+});
+
 module.exports = router;
