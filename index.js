@@ -7,7 +7,7 @@ const server = express();
 const usersRoutes = require('./users/usersRoutes');
 const workoutRoutes = require('./workouts/workoutsRoutes');
 const exerciseRouter = require('./exercises/exercisesRoutes');
-const workoutHistory = require('./workouts/workoutsRoutes');
+const workoutHistory = require('./workouts/workoutsHistoryRoutes');
 
 server.use(helmet());
 server.use(cors());

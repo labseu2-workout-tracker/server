@@ -7,11 +7,6 @@ function getWorkoutExercises(id) {
     .where('workout_id', '=', id);
 }
 
-function getWorkoutHistory(id) {
-  return db('workouts').select({ user_id: id });
-}
-
 module.exports = {
   getWorkoutExercises,
-  getWorkoutHistory,
 };
