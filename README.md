@@ -1,3 +1,4 @@
+# BeFit [![Build Status](https://travis-ci.com/labseu2-workout-tracker/server.svg?branch=master)](https://travis-ci.com/labseu2-workout-tracker/server)
 # API documentation
 
 Rest API
@@ -78,7 +79,7 @@ _example:_
 
 **201 (Created)**
 
-If you successfully register a user the endpoint will return an HTTP response with a status code 201 and a body as below.
+( If you successfully register a user the endpoint will return an HTTP response with a status code 201 and a body as below.)
 
 _example:_
 
@@ -92,7 +93,7 @@ _example:_
 
 **400 (Bad Request)**
 
-If you are missing an email or password for registration, the endpoint will return an HTTP response with a status code 400 and a body as below.
+( If you are missing an email or password for registration, the endpoint will return an HTTP response with a status code 400 and a body as below. )
 
 _example:_
 
@@ -106,7 +107,7 @@ _example:_
 
 **500 (Internal Server Error)**
 
-If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below.
+( If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below. )
 
 _example:_
 
@@ -153,7 +154,7 @@ _example:_
 
 **200 (OK)**
 
-If you successfully login, the endpoint will return an HTTP response with a status code 200 and a body as below.
+( If you successfully login, the endpoint will return an HTTP response with a status code 200 and a body as below.)
 
 _example:_
 
@@ -167,7 +168,7 @@ _example:_
 
 **401 (Unauthorized)**
 
-If you fail to login, the endpoint will return an HTTP response with a status code 401 which indicates the email and or password entered is not valid.
+( If you fail to login, the endpoint will return an HTTP response with a status code 401 which indicates the email and or password entered is not valid. )
 
 _example:_
 
@@ -181,7 +182,7 @@ _example:_
 
 **500 (Bad Request)**
 
-If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below.
+( If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below. )
 
 _example:_
 
@@ -224,7 +225,7 @@ _HTTP method:_**[GET]**
 
 **200 (OK)**
 
-If the user profile is found in the database, the endpoint will return an HTTP response with a status code 200 and a body as below.
+( If the user profile is found in the database, the endpoint will return an HTTP response with a status code 200 and a body as below.)
 
 _example:_
 
@@ -254,7 +255,7 @@ _example:_
 
 **404 (Not Found)**
 
-If the provided userId doesn&#39;t have a profile, the endpoint will return an HTTP response with a status code 404 and a body as below.
+( If the provided userId doesn&#39;t have a profile, the endpoint will return an HTTP response with a status code 404 and a body as below. )
 
 _example:_
 
@@ -266,7 +267,7 @@ _example:_
 
 **500 (Internal Server Error)**
 
-If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below.
+( If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below.)
 
 _example:_
 
@@ -339,7 +340,7 @@ _example:_
 
 **201 (Created)**
 
-If you successfully create a user profile, the endpoint will return an HTTP response with a status code 201 and a body as below.
+( If you successfully create a user profile, the endpoint will return an HTTP response with a status code 201 and a body as below. )
 
 _example:_
 
@@ -371,7 +372,7 @@ _example:_
 
 **500 (Internal Server Error)**
 
-If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below.
+( If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below. )
 
 _example:_
 
@@ -451,7 +452,7 @@ _example:_
 
 **200 (OK)**
 
-If user with the specified ID in the URL parameters is updated successfully in the database, the endpoint will return an HTTP response with a status code 200 and a body as below.
+( If user with the specified ID in the URL parameters is updated successfully in the database, the endpoint will return an HTTP response with a status code 200 and a body as below. )
 
 _example:_
 
@@ -483,7 +484,7 @@ _example:_
 
 **404 (Not Found)**
 
-If the applicant profile for the specified id can&#39;t be found in the database, the endpoint will return an HTTP response with a status code 404 and a body as below.
+( If the applicant profile for the specified id can&#39;t be found in the database, the endpoint will return an HTTP response with a status code 404 and a body as below. )
 
 _example:_
 
@@ -497,7 +498,7 @@ _example:_
 
 **500 (Internal Server Error)**
 
-If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below.
+( If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below. )
 
 _example:_
 
@@ -534,7 +535,7 @@ _HTTP method:_**[DELETE]**
 
 **200 (OK)**
 
-If user with the specified ID in the URL parameters is deleted successfully in the database, the endpoint will return an HTTP response with a status code 200 and a body as below.
+( If user with the specified ID in the URL parameters is deleted successfully in the database, the endpoint will return an HTTP response with a status code 200 and a body as below. )
 
 _example:_
 
@@ -546,7 +547,7 @@ _example:_
 
 **404 (Not Found)**
 
-If the applicant profile for the specified id can&#39;t be found in the database, the endpoint will return an HTTP response with a status code 404 and a body as below.
+( If the applicant profile for the specified id can&#39;t be found in the database, the endpoint will return an HTTP response with a status code 404 and a body as below.)
 
 _example:_
 
@@ -560,7 +561,7 @@ _example:_
 
 **500 (Bad Request)**
 
-If you send in invalid fields, the endpoint will return an HTTP response with a status code 500 and a body as below.
+( If you send in invalid fields, the endpoint will return an HTTP response with a status code 500 and a body as below. )
 
 _example:_
 
@@ -589,7 +590,7 @@ _HTTP method:_**[GET]**
 
 **200 (OK)**
 
-If workout is found in the database, the endpoint will return an HTTP response with a status code 200 and a body as below.
+( If workout is found in the database, the endpoint will return an HTTP response with a status code 200 and a body as below. )
 
 _example:_
 
@@ -617,7 +618,7 @@ _example:_
 
 **404 (Not Found)**
 
-A 404 (Not Found) response has two possible outcomes one if the user doesn&#39;t have any workouts or if the provided user doesn&#39;t have a profile, the endpoint will return an HTTP response with a status code 404 and a body as below.
+( A 404 (Not Found) response has two possible outcomes one if the user doesn&#39;t have any workouts or if the provided user doesn&#39;t have a profile, the endpoint will return an HTTP response with a status code 404 and a body as below. )
 
 _example:_
 
@@ -641,7 +642,7 @@ or
 
 **500 (Internal Server Error)**
 
-If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below.
+( If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below. )
 
 _example:_
 
@@ -713,7 +714,7 @@ _example:_
 
 **201 (Created)**
 
-If you successfully create applicant workout, the endpoint will return an HTTP response with a status code 201 and a body as below.
+( If you successfully create applicant workout, the endpoint will return an HTTP response with a status code 201 and a body as below. )
 
 _example:_
 
@@ -739,7 +740,7 @@ _example:_
 
 **404 (Not Found)**
 
-If  we can&#39;t manage to add the work out to the database or to our list, the endpoint will return an HTTP response with a status code 404 and a body as below.
+ ( If  we can&#39;t manage to add the work out to the database or to our list, the endpoint will return an HTTP response with a status code 404 and a body as below. )
 
 _example:_
 
@@ -753,7 +754,7 @@ _example:_
 
 **400 (Bad Request)**
 
-If you are missing any of the required field(s), the endpoint will return an HTTP response with a status code 400 and a body as below relating to the missing field(s).
+( If you are missing any of the required field(s), the endpoint will return an HTTP response with a status code 400 and a body as below relating to the missing field(s). )
 
 _example:_
 
@@ -767,7 +768,7 @@ _example:_
 
 **500 (Internal Server Error)**
 
-If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below.
+( If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below. )
 
 _example:_
 
@@ -839,7 +840,7 @@ _example:_
 
 **200 (OK)**
 
-If the workout object with the specified ID in the URL parameters is updated successfully in the database, the endpoint will return an HTTP response with a status code 200 and a body as below.
+( If the workout object with the specified ID in the URL parameters is updated successfully in the database, the endpoint will return an HTTP response with a status code 200 and a body as below.)
 
 _example:_
 
@@ -871,7 +872,7 @@ _example:_
 
 **404 (Not Found)**
 
-If the workout object for the specified id can&#39;t be found in the database, the endpoint will return an HTTP response with a status code 404 and a body as below.
+( If the workout object for the specified id can&#39;t be found in the database, the endpoint will return an HTTP response with a status code 404 and a body as below.)
 
 _example:_
 
@@ -885,7 +886,7 @@ _example:_
 
 **400 (Bad Request)**
 
-If you are missing any of the required field(s), the endpoint will return an HTTP response with a status code 400 and a body as below relating to the missing field(s).
+( If you are missing any of the required field(s), the endpoint will return an HTTP response with a status code 400 and a body as below relating to the missing field(s).)
 
 _example:_
 
@@ -899,7 +900,7 @@ _example:_
 
 **500 (Internal Server Error)**
 
-If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below.
+( If there is a server or database error, the endpoint will return an HTTP response with a status code 500 and a body as below.)
 
 _example:_
 
@@ -936,7 +937,7 @@ _HTTP method:_**[DELETE]**
 
 **200 (OK)**
 
-If the workout object specified ID in the URL parameters is deleted successfully in the database, the endpoint will return an HTTP response with a status code 200 and a body as below.
+( If the workout object specified ID in the URL parameters is deleted successfully in the database, the endpoint will return an HTTP response with a status code 200 and a body as below. )
 
 _example:_
 
@@ -950,7 +951,7 @@ _example:_
 
 **404 (Not Found)**
 
-If the Workout object specified ID in the URL parameters is deleted successfully in the database, the endpoint will return an HTTP response with a status code 404 and a body as below.
+( If the Workout object specified ID in the URL parameters is deleted successfully in the database, the endpoint will return an HTTP response with a status code 404 and a body as below.)
 
 _example:_
 
@@ -964,7 +965,7 @@ _example:_
 
 **500 (Bad Request)**
 
-If you send in invalid fields, the endpoint will return an HTTP response with a status code 500 and a body as below.
+( If you send in invalid fields, the endpoint will return an HTTP response with a status code 500 and a body as below.) 
 
 _example:_
 
@@ -973,4 +974,4 @@ _example:_
   &quot;message&quot;: &quot;Oops, something went wrong while deleting this workout&quot;
 
 }
-# BeFit [![Build Status](https://travis-ci.com/labseu2-workout-tracker/server.svg?branch=master)](https://travis-ci.com/labseu2-workout-tracker/server)
+
