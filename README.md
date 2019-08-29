@@ -973,3 +973,4 @@ _example:_
   &quot;message&quot;: &quot;Oops, something went wrong while deleting this workout&quot;
 
 }
+# BeFit [![Build Status](https://travis-ci.com/labseu2-workout-tracker/server.svg?branch=master)](https://travis-ci.com/labseu2-workout-tracker/server)
