@@ -10,9 +10,9 @@ const exerciseRouter = require('./exercises/exercisesRoutes');
 
 server.use(helmet());
 server.use(cors());
+
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
-
 server.use('/auth', usersRoutes);
 server.use('/workouts', workoutRoutes);
 server.use('/exercises', exerciseRouter);
