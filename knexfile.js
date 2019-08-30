@@ -13,7 +13,7 @@ module.exports = {
   },
   testing: {
     client: 'pg',
-    connection: 'postgres://sziafjwyoordwf:1646512ec4e3c773a9462d02c59301bf18594273873a4b2c08887a3875029ff3@ec2-46-137-188-105.eu-west-1.compute.amazonaws.com:5432/dbae59a6pd1pqp?ssl=true',
+    connection: process.env.DATABASE_TEST,
     useNullAsDefault: true,
     migrations: {
       directory: './data/migrations',
