@@ -67,7 +67,9 @@ exports.settings = async (req, res) => {
     if (settings) {
       res.status(200).json(settings);
     } else {
-     
+      res
+        .status(400)
+        .json({ message: `Oops, this user doesn't exist !` });
     }
   } catch (err) {
     res.status(500).json({
