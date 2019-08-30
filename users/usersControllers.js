@@ -22,6 +22,7 @@ exports.signup = async (req, res) => {
       res.status(201).json({
         message: 'User created',
         token: generateToken(newUser.email, newUser.id),
+        userId: newUser.id,
       });
     }
   } catch (error) {
@@ -42,9 +43,10 @@ exports.login = async (req, res) => {
     }
     const user = await User.findBy({ email });
     if (user && bcrypt.compare(password, user.password)) {
-      return res
-        .status(200)
-        .json({ token: generateToken(user.email, user.id) });
+      return res.status(200).json({
+        token: generateToken(user.email, user.id),
+        userId: user.id,
+      });
     }
     return res
       .status(401)
