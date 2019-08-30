@@ -58,23 +58,3 @@ exports.login = async (req, res) => {
     });
   }
 };
-
-exports.settings = async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    const settings = await User.findById(id);
-    if (settings) {
-      return res.status(200).json(settings);
-    } else {
-      return res
-        .status(400)
-        .json({ message: `Oops, this user doesn't exist !` });
-    }
-  } catch (err) {
-   return res.status(500).json({
-      message: 'Oops, something went wrong while loging in',
-      err,
-    });
-  }
-};
