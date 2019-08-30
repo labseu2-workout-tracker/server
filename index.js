@@ -5,8 +5,8 @@ const cors = require('cors');
 const server = express();
 
 const usersRoutes = require('./users/usersRoutes');
-const workoutRoutes = require('./workouts/workoutsRoutes');
 const exerciseRouter = require('./exercises/exercisesRoutes');
+const exerciseSets = require('./workouts/exerciseSets/exerciseSetsRoutes');
 const workoutRouter = require('./workouts/workoutsRoutes');
 
 server.use(helmet());
@@ -15,7 +15,7 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
 server.use('/auth', usersRoutes);
-server.use('/workouts', workoutRoutes);
+server.use('/workout_exercises', exerciseSets);
 server.use('/exercises', exerciseRouter);
 server.use('/workouts', workoutRouter);
 
