@@ -65,14 +65,14 @@ exports.settings = async (req, res) => {
 
     const settings = await User.findById(id);
     if (settings) {
-      res.status(200).json(settings);
+      return res.status(200).json(settings);
     } else {
-      res
+      return res
         .status(400)
         .json({ message: `Oops, this user doesn't exist !` });
     }
   } catch (err) {
-    res.status(500).json({
+   return res.status(500).json({
       message: 'Oops, something went wrong while loging in',
       err,
     });
