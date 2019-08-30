@@ -63,7 +63,8 @@ exports.settings = async (req, res) => {
   try {
     const { id } = req.params;
 
-    
+    const settings = await User.findById(id);
+   
   } catch (err) {
     res.status(500).json({
       message: 'Oops, something went wrong while loging in',
