@@ -61,7 +61,13 @@ exports.login = async (req, res) => {
 
 exports.settings = async (req, res) => {
   try {
+    const { id } = req.params;
+
     
   } catch (err) {
-   
+    res.status(500).json({
+      message: 'Oops, something went wrong while loging in',
+      err,
+    });
+  }
 };
