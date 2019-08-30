@@ -1,6 +1,5 @@
 const workoutModel = require('./workoutsModels.js');
 
-
 exports.getAllWorkout = async (req, res) => {
   try {
     const workouts = await workoutModel.getWorkouts();
