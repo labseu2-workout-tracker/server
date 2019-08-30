@@ -4,7 +4,7 @@ const { validateUser } = require('./usersHelper');
 
 const router = express.Router();
 
-router.get('/settings', usersControllers.settings);
+router.get('/settings/:id', usersControllers.settings);
 
 router.post('/signup', validateUser, usersControllers.signup);
 
