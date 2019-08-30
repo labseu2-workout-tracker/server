@@ -58,3 +58,7 @@ exports.login = async (req, res) => {
     });
   }
 };
+
+exports.settings = async (req, res) => {
+ 
+};
