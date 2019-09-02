@@ -23,19 +23,6 @@ module.exports = {
       directory: './data/seeds',
     },
   },
-  // Heroku requires this staging environment please don't remove
-  testing: {
-    client: 'pg',
-    connection: process.env.DATABASE_URL,
-    useNullAsDefault: true,
-    migrations: {
-      directory: './data/migrations',
-      tableName: 'dbmigrations',
-    },
-    seeds: {
-      directory: './data/seeds',
-    },
-  },
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL,
