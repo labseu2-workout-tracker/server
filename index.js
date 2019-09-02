@@ -8,6 +8,7 @@ const usersRoutes = require('./users/usersRoutes');
 const exerciseRouter = require('./exercises/exercisesRoutes');
 const exerciseSets = require('./workouts/exerciseSets/exerciseSetsRoutes');
 const workoutRouter = require('./workouts/workoutsRoutes');
+const settingsRouter = require('./users/usersSettingsRoutes');
 
 server.use(helmet());
 server.use(cors());
@@ -18,6 +19,7 @@ server.use('/auth', usersRoutes);
 server.use('/workout_exercises', exerciseSets);
 server.use('/exercises', exerciseRouter);
 server.use('/workouts', workoutRouter);
+server.use('/settings', settingsRouter);
 
 server.get('/', (req, res) => {
   res.status(200).json({ message: 'Workout Tracker API' });
