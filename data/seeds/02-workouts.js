@@ -10,21 +10,21 @@ exports.seed = function(knex) {
           workout_description:
             'The perfect workout for your leg muscles',
           image_url: 'https://i.postimg.cc/bvLZzGrP/squats.jpg',
-          user_id: 1,
+          
         },
         {
           workout_name: 'Arms',
           workout_description:
             'The perfect workout for your leg muscles',
           image_url: 'https://i.postimg.cc/bvLZzGrP/squats.jpg',
-          user_id: 1,
+          
         },
         {
           workout_name: 'Chest',
           workout_description:
             'The perfect workout for your leg muscles',
           image_url: 'https://i.postimg.cc/bvLZzGrP/squats.jpg',
-          user_id: 1,
+          
         },
       ]);
     });
