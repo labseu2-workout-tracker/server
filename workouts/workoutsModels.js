@@ -39,7 +39,10 @@ function getWorkouts() {
 }
 
 async function startWorkoutSession(session) {
-  const workoutSession = await db('workout-session').insert(session);
+  const [workoutSession] = await db('workout-session').insert(
+    session,
+    '*',
+  );
   return workoutSession;
 }
 

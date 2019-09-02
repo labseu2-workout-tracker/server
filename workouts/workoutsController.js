@@ -37,7 +37,11 @@ exports.startWorkoutSession = async (req, res) => {
     );
     return res.status(200).json({
       message: 'workout session started',
-      startSession,
+      data: {
+        sessionId: startSession.id,
+        userId: startSession.user_id,
+        start: startSession.session_start,
+      },
     });
   } catch (error) {
     console.log(error.message);

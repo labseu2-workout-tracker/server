@@ -14,7 +14,7 @@ router.get(
 
 router.get('/', checkLoggedIn, workoutsController.getAllWorkout);
 router.post(
-  '/:workoutId/start',
+  '/:id/start',
   checkLoggedIn,
   validateId,
   workoutsController.startWorkoutSession,
