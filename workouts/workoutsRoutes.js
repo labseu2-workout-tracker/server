@@ -22,4 +22,12 @@ router.post(
   workoutsController.startWorkoutSession,
 );
 
+router.post(
+  '/:id/end',
+  checkLoggedIn,
+  validateId,
+  checkWorkoutSession,
+  workoutsController.endWorkoutSession,
+);
+
 module.exports = router;
