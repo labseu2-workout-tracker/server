@@ -51,7 +51,7 @@ describe('Workouts', () => {
   });
 
   describe('GET /workouts/:id - Get details of exercise in one workout plan', () => {
-    it.skip('should return a status of 200 with the details of the workout', () => {
+    it('should return a status of 200 with the details of the workout', () => {
       return request(server)
         .get('/workouts/4')
         .set('Authorization', `Bearer ${token}`)
