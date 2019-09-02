@@ -1,7 +1,7 @@
 const workoutModel = require('../workouts/workoutsModels');
 
 module.exports = async (req, res, next) => {
-  // split endpoint and save the last path.
+  // split request url and save the last path.
   let endpoint = req.originalUrl.split('/');
   endpoint = endpoint[endpoint.length - 1];
   const userSession = await workoutModel.findWorkoutSessionByUserId(
@@ -19,7 +19,7 @@ module.exports = async (req, res, next) => {
   }
   if (endpoint === 'end') {
     return res.status(400).json({
-      message: 'You do not have a workout in session',
+      message: 'You do not have a workout session in progress',
     });
   }
   return next();
