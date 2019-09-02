@@ -7,8 +7,24 @@ exports.seed = function(knex) {
       return knex('workouts').insert([
         {
           workout_name: 'Legs',
-          workout_description: 'The perfect workout for your leg muscles',
+          workout_description:
+            'The perfect workout for your leg muscles',
           image_url: 'https://i.postimg.cc/bvLZzGrP/squats.jpg',
+          user_id: 1,
+        },
+        {
+          workout_name: 'Arms',
+          workout_description:
+            'The perfect workout for your leg muscles',
+          image_url: 'https://i.postimg.cc/bvLZzGrP/squats.jpg',
+          user_id: 1,
+        },
+        {
+          workout_name: 'Chest',
+          workout_description:
+            'The perfect workout for your leg muscles',
+          image_url: 'https://i.postimg.cc/bvLZzGrP/squats.jpg',
+          user_id: 1,
         },
       ]);
     });

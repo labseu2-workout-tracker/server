@@ -6,6 +6,7 @@ router.get('/', async (req, res) => {
     const exercises = await db.findExercises();
     res.status(200).json(exercises);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ Error: 'Internal Server Error' });
   }
 });
