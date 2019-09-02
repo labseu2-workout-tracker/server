@@ -96,4 +96,37 @@ describe('Workouts', () => {
         });
     });
   });
+
+  describe('Post /workouts/4/start', () => {
+    it('should return a 200 when a user starts a workout', () => {
+      return request(server)
+        .post('/workouts/3/start')
+        .set('Authorization', `Bearer ${token}`)
+        .then(res => {
+          expect(res.statusCode).toBe(200);
+          expect(res.body.message).toBe('workout session started');
+          expect(res.body.data).toBeInstanceOf(Object);
+        });
+    });
+    it('should return a 400 when a user tries to start another workout before completing one earlier', () => {
+      return request(server)
+        .post('/workouts/3/start')
+        .set('Authorization', `Bearer ${token}`)
+        .then(res => {
+          expect(res.statusCode).toBe(400);
+          expect(res.body.message).toEqual(
+            'You must finish your current workout before starting another',
+          );
+        });
+    });
+    it('should return a status of 401 if invalid token', () => {
+      const invalidToken = 'mhvhgjbhjkljkn098765754667854565';
+      return request(server)
+        .post('/workouts/3/Start')
+        .set('Authorization', `Bearer ${invalidToken}`)
+        .then(res => {
+          expect(res.statusCode).toBe(401);
+        });
+    });
+  });
 });

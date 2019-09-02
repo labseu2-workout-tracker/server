@@ -38,8 +38,25 @@ function getWorkouts() {
   return db('workouts');
 }
 
+async function startWorkoutSession(session) {
+  const [workoutSession] = await db('workout-session').insert(
+    session,
+    '*',
+  );
+  return workoutSession;
+}
+
+function findWorkoutSessionByUserId(userId) {
+  return db('workout-session')
+    .where({ user_id: userId })
+    .whereNotNull('session_start')
+    .whereNull('session_end');
+}
+
 module.exports = {
   findWorkoutExercises,
   findWorkoutById,
   getWorkouts,
+  startWorkoutSession,
+  findWorkoutSessionByUserId,
 };
