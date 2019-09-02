@@ -10,3 +10,13 @@ exports.getAllWorkout = async (req, res) => {
     });
   }
 };
+
+exports.getOneWorkout = async (req, res) => {
+  try {
+    res.status(200).json({
+      data: req.workoutDetails,
+    });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
