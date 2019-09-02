@@ -13,5 +13,11 @@ router.get(
 );
 
 router.get('/', checkLoggedIn, workoutsController.getAllWorkout);
+router.post(
+  '/:workoutId/start',
+  checkLoggedIn,
+  validateId,
+  workoutsController.startWorkoutSession,
+);
 
 module.exports = router;

@@ -38,8 +38,14 @@ function getWorkouts() {
   return db('workouts');
 }
 
+async function startWorkoutSession(session) {
+  const workoutSession = await db('workout-session').insert(session);
+  return workoutSession;
+}
+
 module.exports = {
   findWorkoutExercises,
   findWorkoutById,
   getWorkouts,
+  startWorkoutSession,
 };

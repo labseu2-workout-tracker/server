@@ -20,3 +20,29 @@ exports.getOneWorkout = async (req, res) => {
     res.status(500).json({ error });
   }
 };
+
+exports.startWorkoutSession = async (req, res) => {
+  try {
+    const { userId } = req;
+    const { workoutId } = req.params;
+    console.log(userId);
+    console.log(workoutId);
+    const session = {
+      session_start: new Date().toISOString(),
+      workout_id: workoutId,
+      user_id: userId,
+    };
+    const startSession = await workoutModel.startWorkoutSession(
+      session,
+    );
+    return res.status(200).json({
+      message: 'workout session started',
+      startSession,
+    });
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({
+      Error: error.message,
+    });
+  }
+};
