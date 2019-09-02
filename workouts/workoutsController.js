@@ -47,3 +47,22 @@ exports.startWorkoutSession = async (req, res) => {
     });
   }
 };
+
+exports.endWorkoutSession = async (req, res) => {
+  try {
+    const sessionEnd = new Date().toISOString();
+    const { id } = req.session;
+    const endSession = await workoutModel.endWorkoutSession(
+      id,
+      sessionEnd,
+    );
+    return res.status(200).json({
+      data: endSession,
+      message: 'workout session ended',
+    });
+  } catch (error) {
+    return res.status(500).json({
+      Error: error.message,
+    });
+  }
+};
