@@ -1,5 +1,6 @@
 require('dotenv').config(); // load .env variables
 
+
 module.exports = {
   development: {
     client: 'pg',
