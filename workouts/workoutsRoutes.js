@@ -1,18 +1,16 @@
 const express = require('express');
-
-const router = express.Router();
-const DB = require('./workoutsModels');
+const validateId = require('../middlewares/validateId');
 const workoutsController = require('./workoutsController');
 const checkLoggedIn = require('../middlewares/restrictedMiddleware');
 
-router.get('/:id', async (req, res) => {
-  try {
-    const exercises = await DB.getWorkoutExercises(req.params.id);
-    res.status(200).json(exercises);
-  } catch (error) {
-    res.status(404).json('Not found');
-  }
-});
+const router = express.Router();
+
+router.get(
+  '/:id',
+  checkLoggedIn,
+  validateId,
+  workoutsController.getOneWorkout,
+);
 
 router.get('/', checkLoggedIn, workoutsController.getAllWorkout);
 
