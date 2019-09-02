@@ -24,12 +24,11 @@ exports.getOneWorkout = async (req, res) => {
 exports.startWorkoutSession = async (req, res) => {
   try {
     const { userId } = req;
-    const { workoutId } = req.params;
+    const { id } = req.params;
     console.log(userId);
-    console.log(workoutId);
     const session = {
       session_start: new Date().toISOString(),
-      workout_id: workoutId,
+      workout_id: id,
       user_id: userId,
     };
     const startSession = await workoutModel.startWorkoutSession(
@@ -44,7 +43,6 @@ exports.startWorkoutSession = async (req, res) => {
       },
     });
   } catch (error) {
-    console.log(error.message);
     return res.status(500).json({
       Error: error.message,
     });

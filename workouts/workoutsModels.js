@@ -46,9 +46,17 @@ async function startWorkoutSession(session) {
   return workoutSession;
 }
 
+function findWorkoutSessionByUserId(userId) {
+  return db('workout-session')
+    .where({ user_id: userId })
+    .whereNotNull('session_start')
+    .whereNull('session_end');
+}
+
 module.exports = {
   findWorkoutExercises,
   findWorkoutById,
   getWorkouts,
   startWorkoutSession,
+  findWorkoutSessionByUserId,
 };
