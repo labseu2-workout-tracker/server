@@ -25,7 +25,6 @@ exports.startWorkoutSession = async (req, res) => {
   try {
     const { userId } = req;
     const { id } = req.params;
-    console.log(userId);
     const session = {
       session_start: new Date().toISOString(),
       workout_id: id,

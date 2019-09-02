@@ -6,7 +6,8 @@ exports.up = function(knex) {
       .references('id')
       .inTable('users')
       .onUpdate('CASCADE')
-      .onDelete('CASCADE');
+      .onDelete('CASCADE')
+      .notNullable();
   });
 };
 
