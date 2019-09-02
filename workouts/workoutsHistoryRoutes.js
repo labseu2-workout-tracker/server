@@ -5,7 +5,6 @@ const router = express.Router();
 const DB = require('../workouts/workoutsHistoryModels');
 
 router.get('/:id', async (req, res) => {
-  console.log(req.params.id);
   try {
     const exerciseHistory = await DB.getWorkoutHistory(req.params.id);
     res.status(200).json(exerciseHistory);
