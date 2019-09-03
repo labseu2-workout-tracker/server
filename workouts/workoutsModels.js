@@ -46,6 +46,15 @@ async function startWorkoutSession(session) {
   return workoutSession;
 }
 
+async function endWorkoutSession(sessionId, sessionEnd) {
+  const workoutSession = await db('workout-session')
+    .where('id', '=', sessionId)
+    .update({
+      session_end: sessionEnd,
+    });
+  return workoutSession;
+}
+
 function findWorkoutSessionByUserId(userId) {
   return db('workout-session')
     .where({ user_id: userId })
@@ -58,5 +67,6 @@ module.exports = {
   findWorkoutById,
   getWorkouts,
   startWorkoutSession,
+  endWorkoutSession,
   findWorkoutSessionByUserId,
 };

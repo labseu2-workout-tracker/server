@@ -51,7 +51,7 @@ describe('Workouts', () => {
   });
 
   describe('GET /workouts/:id - Get details of exercise in one workout plan', () => {
-    it.skip('should return a status of 200 with the details of the workout', () => {
+    it('should return a status of 200 with the details of the workout', () => {
       return request(server)
         .get('/workouts/4')
         .set('Authorization', `Bearer ${token}`)
@@ -123,6 +123,46 @@ describe('Workouts', () => {
       const invalidToken = 'mhvhgjbhjkljkn098765754667854565';
       return request(server)
         .post('/workouts/3/Start')
+        .set('Authorization', `Bearer ${invalidToken}`)
+        .then(res => {
+          expect(res.statusCode).toBe(401);
+        });
+    });
+  });
+
+  describe('POST /workouts/:id/end - End a workout session', () => {
+    beforeAll(done => {
+      request(server)
+        .post('/workouts/4/start')
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          done();
+        });
+    });
+    it('should return a 200 when a user successfully ends a workout', () => {
+      return request(server)
+        .post('/workouts/4/end')
+        .set('Authorization', `Bearer ${token}`)
+        .then(res => {
+          expect(res.statusCode).toBe(200);
+          expect(res.body.message).toBe('workout session ended');
+        });
+    });
+    it('should return a 400 when a user tries to end a workout that is not in progress', () => {
+      return request(server)
+        .post('/workouts/4/end')
+        .set('Authorization', `Bearer ${token}`)
+        .then(res => {
+          expect(res.statusCode).toBe(400);
+          expect(res.body.message).toEqual(
+            'You do not have a workout session in progress',
+          );
+        });
+    });
+    it('should return a status of 401 if invalid token', () => {
+      const invalidToken = 'mhvhgjbhjkljkn098765754667854565';
+      return request(server)
+        .post('/workouts/2/end')
         .set('Authorization', `Bearer ${invalidToken}`)
         .then(res => {
           expect(res.statusCode).toBe(401);
