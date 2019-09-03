@@ -27,6 +27,12 @@ server.get('/', (req, res) => {
   res.status(200).json({ message: 'Workout Tracker API' });
 });
 
+server.all('*', (req, res) => {
+  res.status(404).send({
+    error: 'The resource you are looking for does not exist',
+  });
+});
+
 const port = process.env.PORT || 5000;
 // server.listen(port, console.log(`Listening on Port ${port}`));
 
