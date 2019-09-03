@@ -56,9 +56,33 @@ exports.endWorkoutSession = async (req, res) => {
       id,
       sessionEnd,
     );
+    return endSession
+      ? res.status(200).json({
+          message: 'workout session ended',
+        })
+      : res.status(500).json({
+          error: 'Something went wrong, Please Try Again',
+        });
+  } catch (error) {
+    return res.status(500).json({
+      Error: error.message,
+    });
+  }
+};
+
+exports.getWorkoutHistory = async (req, res) => {
+  try {
+    let { days } = req.query;
+    // if days provided is not valid, discard it.
+    days = !Number.isNaN(Number(days)) ? days : undefined;
+    const { userId } = req;
+    const workoutHistory = await workoutModel.getWorkoutHistory(
+      userId,
+      days,
+    );
     return res.status(200).json({
-      data: endSession,
-      message: 'workout session ended',
+      message: 'Workout History Retrieved Succesfully',
+      workoutHistory,
     });
   } catch (error) {
     return res.status(500).json({
