@@ -9,6 +9,17 @@ const findBy = filter => {
 const findById = id => {
   return db('users')
     .where({ id })
+    .select(
+      'id',
+      'username',
+      'email',
+      'gender',
+      'push_notification',
+      'email_notification',
+      'weight',
+      'height',
+      'unit',
+    )
     .first();
 };
 
