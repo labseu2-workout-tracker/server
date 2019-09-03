@@ -62,6 +62,24 @@ function findWorkoutSessionByUserId(userId) {
     .whereNull('session_end');
 }
 
+function getWorkoutHistory(userId, dayLimit) {
+  // if dayLimit is provided, multiply the days by 86400000 milliseconds
+  // subtract the result from the current day's JS Date value
+  // parse the result to a Date value and convert toISOString()
+  // if dayLimit is not provided, use a predefined default limit.
+  const dateLimit =
+    (dayLimit
+      ? new Date(new Date() - dayLimit * 86400000).toISOString()
+      : false) || new Date(1567213780604).toISOString();
+
+  return db('workout-session')
+    .where({
+      user_id: userId,
+    })
+    .where('session_start', '>=', dateLimit)
+    .select('id', 'session_start', 'session_end', 'workout_id');
+}
+
 module.exports = {
   findWorkoutExercises,
   findWorkoutById,
@@ -69,4 +87,5 @@ module.exports = {
   startWorkoutSession,
   endWorkoutSession,
   findWorkoutSessionByUserId,
+  getWorkoutHistory,
 };
