@@ -9,18 +9,43 @@ const findBy = filter => {
 const findById = id => {
   return db('users')
     .where({ id })
+    .select(
+      'id',
+      'username',
+      'email',
+      'gender',
+      'push_notification',
+      'email_notification',
+      'weight',
+      'height',
+      'user_level',
+    )
     .first();
 };
 
 const createUser = async user => {
-  const [id] = await db('users')
-    .insert(user)
-    .returning('id');
-  return findById(id);
+  return db('users').insert(user, ['id', 'email', 'username']);
+};
+
+const updateUser = async (id, user) => {
+  return db('users')
+    .where({ id })
+    .update(user, [
+      'id',
+      'username',
+      'email',
+      'gender',
+      'push_notification',
+      'email_notification',
+      'weight',
+      'height',
+      'user_level',
+    ]);
 };
 
 module.exports = {
   findBy,
   createUser,
   findById,
+  updateUser,
 };
