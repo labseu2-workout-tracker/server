@@ -11,3 +11,40 @@ exports.getOne = async (req, res) => {
     res.status(500).json({ error });
   }
 };
+
+exports.updateProfile = async (req, res) => {
+  try {
+    const {
+      username,
+      email,
+      gender,
+      weight,
+      height,
+      unit,
+    } = req.body;
+    const userLevel = req.body.user_level;
+    const pushNotification = req.body.push_notification;
+    const emailNotification = req.body.email_notification;
+    const id = req.userId;
+    const user = await usersModel.findById(id);
+    const newUser = {
+      username: username || user.username,
+      email: email || user.email,
+      gender: gender || user.gender,
+      push_notification: pushNotification || user.push_notification,
+      email_notification:
+        emailNotification || user.email_notification,
+      weight: weight || user.weight,
+      height: height || user.height,
+      user_level: userLevel || user.user_level,
+      unit: unit || user.unit,
+    };
+    const updatedUser = await usersModel.updateUser(id, newUser);
+    res.status(200).json({
+      updatedUser,
+      message: 'let us do this',
+    });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
