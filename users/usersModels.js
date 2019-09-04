@@ -19,7 +19,6 @@ const findById = id => {
       'weight',
       'height',
       'user_level',
-      'unit',
     )
     .first();
 };
@@ -41,7 +40,6 @@ const updateUser = async (id, user) => {
       'weight',
       'height',
       'user_level',
-      'unit',
     ]);
 };
 

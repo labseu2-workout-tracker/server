@@ -12,7 +12,6 @@ describe('Workouts', () => {
         password: '123456',
       })
       .end((err, res) => {
-        console.log(res.body);
         token = res.body.token;
         done();
       });
@@ -65,11 +64,11 @@ describe('Workouts', () => {
         .put('/profile')
         .set('Authorization', `Bearer ${token}`)
         .send({
-          unit: 'pound/foot',
+          username: 'haywhyze',
         })
         .then(res => {
           expect(res.statusCode).toBe(200);
-          expect(res.body.user.unit).toBe('pound/foot');
+          expect(res.body.user.username).toBe('haywhyze');
         });
     });
     it('should return a status of 200 with the details of the updated user', () => {

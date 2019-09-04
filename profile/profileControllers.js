@@ -22,7 +22,6 @@ exports.updateProfile = async (req, res) => {
       gender,
       weight,
       height,
-      unit,
     } = req.body;
     const userLevel = req.body.user_level;
     const pushNotification = req.body.push_notification;
@@ -42,7 +41,6 @@ exports.updateProfile = async (req, res) => {
       weight: weight || user.weight,
       height: height || user.height,
       user_level: userLevel || user.user_level,
-      unit: unit || user.unit,
     };
     if (hashedPassword) newUser.password = hashedPassword;
     const [updatedUser] = await usersModel.updateUser(id, newUser);

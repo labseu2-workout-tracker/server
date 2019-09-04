@@ -36,7 +36,7 @@ const validateUserInput = [
     .trim(),
   check('height')
     .optional()
-    .isFloat({ min: 1, max: 100 })
+    .isFloat({ min: 1, max: 1000 })
     .withMessage('Height should be float number between 1 and 100')
     .trim(),
   check('user_level')
@@ -45,11 +45,6 @@ const validateUserInput = [
     .withMessage(
       'User level should be one of Beginner, Intermediate or Expert',
     )
-    .trim(),
-  check('unit')
-    .optional()
-    .isIn(['kg/m', 'pound/foot'])
-    .withMessage('Units should be one of kg/m or pound/foot')
     .trim(),
 
   (req, res, next) => {
