@@ -29,6 +29,7 @@ const validateUser = [
     .trim(),
   check('username')
     .isLength({ min: 2 })
+    .isAlphanumeric()
     .withMessage(
       'Please add a username with at least 2 characters long.',
     )
