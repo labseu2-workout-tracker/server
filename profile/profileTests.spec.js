@@ -18,7 +18,7 @@ describe('Workouts', () => {
       });
   });
 
-  describe('GET /profile/:id - Get a user details', () => {
+  describe('GET /profile - Get a user details', () => {
     it('should return a status of 200 with the details of the user profile', () => {
       return request(server)
         .get(`/profile`)
@@ -43,6 +43,137 @@ describe('Workouts', () => {
         .then(res => {
           expect(res.statusCode).toBe(400);
           expect(res.body.message).toBeDefined();
+        });
+    });
+  });
+
+  describe('PUT /profile - Update a users profile', () => {
+    it('should return a status of 200 with the details of the updated user', () => {
+      return request(server)
+        .put('/profile')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          gender: 'other',
+        })
+        .then(res => {
+          expect(res.statusCode).toBe(200);
+          expect(res.body.user.gender).toBe('other');
+        });
+    });
+    it('should return a status of 200 with the details of the updated user', () => {
+      return request(server)
+        .put('/profile')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          unit: 'pound/foot',
+        })
+        .then(res => {
+          expect(res.statusCode).toBe(200);
+          expect(res.body.user.unit).toBe('pound/foot');
+        });
+    });
+    it('should return a status of 200 with the details of the updated user', () => {
+      return request(server)
+        .put('/profile')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          height: '89',
+        })
+        .then(res => {
+          expect(res.statusCode).toBe(200);
+          expect(res.body.user.height).toBe(89);
+        });
+    });
+    it('should return a status of 200 with the details of the updated user', () => {
+      return request(server)
+        .put('/profile')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          weight: '455',
+        })
+        .then(res => {
+          expect(res.statusCode).toBe(200);
+          expect(res.body.user.weight).toBe(455);
+        });
+    });
+    it('should return a status of 200 with the details of the updated user', () => {
+      return request(server)
+        .put('/profile')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          user_level: 'Expert',
+        })
+        .then(res => {
+          expect(res.statusCode).toBe(200);
+          expect(res.body.user.user_level).toBe('Expert');
+        });
+    });
+    it('should return a status of 200 with the details of the updated user', () => {
+      return request(server)
+        .put('/profile')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          password: 'newPassword',
+        })
+        .then(res => {
+          expect(res.statusCode).toBe(200);
+        });
+    });
+    it('should return a status 200 when user logs in with the new password', () => {
+      return request(server)
+        .post('/auth/login')
+        .send({
+          email: 'yusuf@example.com',
+          password: 'newPassword',
+        })
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .then(response => {
+          expect(response.status).toEqual(200);
+        });
+    });
+    it('should return a status of 400 when validation fails', () => {
+      return request(server)
+        .put('/profile')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          user_level: 'wrong',
+        })
+        .then(res => {
+          expect(res.statusCode).toBe(400);
+        });
+    });
+    it('should return a status of 400 when validation fails', () => {
+      return request(server)
+        .put('/profile')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          gender: 'wrong',
+        })
+        .then(res => {
+          expect(res.statusCode).toBe(400);
+        });
+    });
+    it('should return a status of 401 if invalid token', () => {
+      const invalidToken = 'mhvhgjbhjkljkn098765754667854565';
+      return request(server)
+        .put(`/profile`)
+        .set('Authorization', `Bearer ${invalidToken}`)
+        .send({
+          weight: '455',
+        })
+        .then(res => {
+          expect(res.statusCode).toBe(401);
+        });
+    });
+    it('should return a status of 400 if no token is provided', () => {
+      return request(server)
+        .put(`/profile`)
+        .send({
+          weight: '455',
+        })
+        .then(res => {
+          expect(res.statusCode).toBe(400);
         });
     });
   });
