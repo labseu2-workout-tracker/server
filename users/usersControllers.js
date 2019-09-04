@@ -18,11 +18,11 @@ exports.signup = async (req, res) => {
         message: 'Oops, user already exists',
       });
     } else {
-      const newUser = await User.createUser(credentials);
+      const [newUser] = await User.createUser(credentials);
       res.status(201).json({
         message: 'User created',
         token: generateToken(newUser.email, newUser.id),
-        userId: newUser.id,
+        user: newUser,
       });
     }
   } catch (error) {
