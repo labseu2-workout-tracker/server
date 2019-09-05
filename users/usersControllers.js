@@ -42,7 +42,8 @@ exports.login = async (req, res) => {
         .json({ message: 'Oops, email is required for login.' });
     }
     const user = await User.findBy({ email });
-    if (user && bcrypt.compare(password, user.password)) {
+    const isEqual = await bcrypt.compare(password, userPassword)
+    if (user && isEqual) {
       return res.status(200).json({
         token: generateToken(user.email, user.id),
         userId: user.id,
