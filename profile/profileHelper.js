@@ -56,7 +56,7 @@ const validateUserInput = [
       });
       res.status(400).json({
         status: 400,
-        error: errorMessage,
+        errorMessage,
       });
     } else next();
   },
