@@ -12,11 +12,21 @@ exports.signup = async (req, res) => {
       email,
       password: hashedPassword,
     };
-    const user = await User.findBy({ email: credentials.email });
-    if (user) {
-      res.status(409).json({
-        message: 'Oops, user already exists',
-      });
+    const emailExist = await User.findBy({
+      email: credentials.email,
+    });
+    const usernameExist = await User.findBy({
+      username: credentials.username,
+    });
+    if (emailExist || usernameExist) {
+      if (emailExist)
+        res.status(409).json({
+          errorMessage: 'Oops, email already exists',
+        });
+      else
+        res.status(409).json({
+          errorMessage: 'Oops, username already exists',
+        });
     } else {
       const [newUser] = await User.createUser(credentials);
       res.status(201).json({
@@ -27,7 +37,7 @@ exports.signup = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({
-      message: 'Oops, something went wrong while registering',
+      errorMessage: 'Oops, something went wrong while registering',
       error,
     });
   }
@@ -36,13 +46,14 @@ exports.signup = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    if (!email) {
-      return res
-        .status(400)
-        .json({ message: 'Oops, email is required for login.' });
+    if (!email || !password) {
+      return res.status(400).json({
+        errorMessage:
+          'Oops, email and password is required for login.',
+      });
     }
     const user = await User.findBy({ email });
-    if (user && bcrypt.compare(password, user.password)) {
+    if (user && bcrypt.compareSync(password, user.password)) {
       return res.status(200).json({
         token: generateToken(user.email, user.id),
         userId: user.id,
@@ -50,10 +61,10 @@ exports.login = async (req, res) => {
     }
     return res
       .status(401)
-      .json({ message: 'Oops, email or password is incorrect' });
+      .json({ errorMessage: 'Oops, email or password is incorrect' });
   } catch (err) {
     return res.status(500).json({
-      message: 'Oops, something went wrong while loging in',
+      errorMessage: 'Oops, something went wrong while loging in',
       err,
     });
   }

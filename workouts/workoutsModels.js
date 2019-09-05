@@ -26,6 +26,7 @@ async function findWorkoutExercises(id) {
         'sets.duration',
         'exercises.description',
         'exercises.video',
+        'exercises.muscle',
         'exercises.picture_one',
         'exercises.picture_two',
         'exercises.equipment',
