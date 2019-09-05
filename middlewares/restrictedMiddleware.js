@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
   const authHeader = req.get('Authorization');
   if (!authHeader) {
     return res.status(400).json({
-      errorMessage: 'Not allowed to accessthis route',
+      errorMessage: 'Not allowed to access this route',
     });
   }
   const token = authHeader.split(' ')[1];
