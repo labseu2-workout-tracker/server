@@ -9,7 +9,10 @@ exports.getOne = async (req, res) => {
       user,
     });
   } catch (error) {
-    res.status(500).json({ error });
+    res.status(500).json({
+      error,
+      errorMessage: 'Internal Server Error',
+    });
   }
 };
 
@@ -48,6 +51,8 @@ exports.updateProfile = async (req, res) => {
       user: updatedUser,
     });
   } catch (error) {
-    res.status(500).json({ error });
+    res
+      .status(500)
+      .json({ error, errorMessage: 'Internal Server Error' });
   }
 };

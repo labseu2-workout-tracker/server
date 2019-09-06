@@ -41,7 +41,7 @@ describe('Workouts', () => {
         .get(`/profile`)
         .then(res => {
           expect(res.statusCode).toBe(400);
-          expect(res.body.message).toBeDefined();
+          expect(res.body.errorMessage).toBeDefined();
         });
     });
   });
