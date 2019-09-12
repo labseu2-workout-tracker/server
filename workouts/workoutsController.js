@@ -90,3 +90,35 @@ exports.getWorkoutHistory = async (req, res) => {
     });
   }
 };
+
+exports.createWorkout = async (req, res) => {
+  const {
+    workout_name,
+    workout_description,
+    level,
+    image_url,
+    exercises,
+  } = req.body;
+  const newWorkout = {
+    workout_name,
+    workout_description,
+    level,
+    image_url,
+  };
+  try {
+    const newWorkoutInfo = await workoutModel.createWorkout(
+      newWorkout,
+      exercises,
+    );
+    if (!newWorkoutInfo) {
+      return res.status(400).json({
+        errorMessage: 'Something went wrong with your request',
+      });
+    }
+    return res.status(200).json(newWorkoutInfo);
+  } catch (error) {
+    return res.status(500).json({
+      errorMessage: error,
+    });
+  }
+};
