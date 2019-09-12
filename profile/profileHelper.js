@@ -39,11 +39,11 @@ const validateUserInput = [
     .isFloat({ min: 1, max: 1000 })
     .withMessage('Height should be float number between 1 and 100')
     .trim(),
-  check('user_level')
+  check('fullname')
     .optional()
-    .isIn(['Beginner', 'Intermediate', 'Expert'])
+    .isLength({ min: 2 })
     .withMessage(
-      'User level should be one of Beginner, Intermediate or Expert',
+      'Please add an alphanumeric fullname with at least 2 characters long.',
     )
     .trim(),
 

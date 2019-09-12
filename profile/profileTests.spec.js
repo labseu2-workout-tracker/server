@@ -10,6 +10,7 @@ describe('Workouts', () => {
         email: 'yusuf@example.com',
         username: 'yusuf',
         password: '123456',
+        fullname: 'yuuf ayo',
       })
       .end((err, res) => {
         token = res.body.token;
@@ -100,11 +101,11 @@ describe('Workouts', () => {
         .put('/profile')
         .set('Authorization', `Bearer ${token}`)
         .send({
-          user_level: 'Expert',
+          fullname: 'Ayomide',
         })
         .then(res => {
           expect(res.statusCode).toBe(200);
-          expect(res.body.user.user_level).toBe('Expert');
+          expect(res.body.user.fullname).toBe('Ayomide');
         });
     });
     it('should return a status of 200 with the details of the updated user', () => {
@@ -136,7 +137,7 @@ describe('Workouts', () => {
         .put('/profile')
         .set('Authorization', `Bearer ${token}`)
         .send({
-          user_level: 'wrong',
+          fullname: '',
         })
         .then(res => {
           expect(res.statusCode).toBe(400);

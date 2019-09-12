@@ -15,6 +15,7 @@ describe('authentication', () => {
         username: 'Bar',
         email: 'foobaz@gmail.com',
         password: '123456',
+        fullname: 'Bar Foo',
       })
       .expect(201)
       .expect('Content-Type', /json/)
@@ -28,6 +29,7 @@ describe('authentication', () => {
       .send({
         username: 'Bar',
         email: 'foobaz@gmail.com',
+        fullname: 'Bar Foo',
         password: '123456',
       })
       .expect(409)
@@ -42,6 +44,7 @@ describe('authentication', () => {
       .send({
         username: 'Bar',
         email: 'foobaz',
+        fullname: 'Bar Foo',
         password: '123456',
       })
       .expect(400)

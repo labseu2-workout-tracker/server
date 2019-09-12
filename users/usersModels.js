@@ -11,6 +11,7 @@ const findById = id => {
     .where({ id })
     .select(
       'id',
+      'fullname',
       'username',
       'email',
       'gender',
@@ -18,13 +19,17 @@ const findById = id => {
       'email_notification',
       'weight',
       'height',
-      'user_level',
     )
     .first();
 };
 
 const createUser = async user => {
-  return db('users').insert(user, ['id', 'email', 'username']);
+  return db('users').insert(user, [
+    'id',
+    'fullname',
+    'email',
+    'username',
+  ]);
 };
 
 const updateUser = async (id, user) => {
@@ -39,7 +44,7 @@ const updateUser = async (id, user) => {
       'email_notification',
       'weight',
       'height',
-      'user_level',
+      'fullname',
     ]);
 };
 

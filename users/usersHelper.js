@@ -34,6 +34,12 @@ const validateUser = [
       'Please add an alphanumeric username with at least 2 characters long.',
     )
     .trim(),
+  check('fullname')
+    .isLength({ min: 2 })
+    .withMessage(
+      'Please add an alphanumeric fullname with at least 2 characters long.',
+    )
+    .trim(),
 
   (req, res, next) => {
     const errors = validationResult(req);

@@ -5,12 +5,13 @@ const { generateToken } = require('./usersHelper');
 
 exports.signup = async (req, res) => {
   try {
-    const { email, username, password } = req.body;
+    const { email, username, password, fullname } = req.body;
     const hashedPassword = await bcrypt.hash(password, 12);
     const credentials = {
       username,
       email,
       password: hashedPassword,
+      fullname,
     };
     const emailExist = await User.findBy({
       email: credentials.email,

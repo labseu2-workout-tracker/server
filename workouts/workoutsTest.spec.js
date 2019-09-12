@@ -9,6 +9,7 @@ describe('Workouts', () => {
       .send({
         email: 'montypython@example.com',
         username: 'montypython',
+        fullname: 'Bar Foo',
         password: '123456',
       })
       .end((err, res) => {
