@@ -84,7 +84,6 @@ async function createWorkout(workout, detailedSets) {
   });
 
   await db('workout-sets').insert(detailedSets, '*');
-  
   return findWorkoutExercises(newWorkout.id);
 }
 
