@@ -99,11 +99,13 @@ exports.createWorkout = async (req, res) => {
     image_url,
     exercises,
   } = req.body;
+  const user_id = req.userId;
   const newWorkout = {
     workout_name,
     workout_description,
     level,
     image_url,
+    user_id
   };
   try {
     const newWorkoutInfo = await workoutModel.createWorkout(
@@ -115,7 +117,7 @@ exports.createWorkout = async (req, res) => {
         errorMessage: 'Something went wrong with your request',
       });
     }
-    return res.status(200).json(newWorkoutInfo);
+    return res.status(201).json(newWorkoutInfo);
   } catch (error) {
     return res.status(500).json({
       errorMessage: error,
