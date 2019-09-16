@@ -209,7 +209,8 @@ describe('Workouts', () => {
   describe('POST /workouts', () => {
     const newWorkout = {
       workout_name: 'Abdomen Fat Remover',
-      workout_description: 'Absolutely removes all the unwanted fat in your belly',
+      workout_description:
+        'Absolutely removes all the unwanted fat in your belly',
       level: 'Beginner',
       exercises: [
         {
@@ -243,13 +244,134 @@ describe('Workouts', () => {
         .set('Authorization', `Bearer ${token}`)
         .send(newWorkout)
         .then(res => {
-          // console.log(res.text);
           expect(res.statusCode).toBe(201);
           expect(typeof res.body).toBe('object');
           expect(typeof res.body.exercises).toBe('object');
           expect(res.body).toHaveProperty('workout_name');
           expect(res.body).toHaveProperty('workout_description');
           expect(res.body).toHaveProperty('exercises');
+        });
+    });
+
+    it('Should return a 422 when workout name is not provided', () => {
+      const invalidWorkout = {
+        workout_description:
+          'Absolutely removes all the unwanted fat in your belly',
+        level: 'Beginner',
+        exercises: [
+          {
+            exercise_id: 1,
+            reps: 10,
+            position: 1,
+          },
+
+          {
+            exercise_id: 1,
+            reps: 12,
+            position: 2,
+          },
+
+          {
+            exercise_id: 1,
+            reps: 15,
+            position: 3,
+          },
+
+          {
+            exercise_id: 2,
+            reps: 10,
+            position: 1,
+          },
+        ],
+      };
+      return request(server)
+        .post('/workouts')
+        .set('Authorization', `Bearer ${token}`)
+        .send(invalidWorkout)
+        .then(res => {
+          expect(res.statusCode).toBe(422);
+          expect(typeof res.body).toBe('object');
+        });
+    });
+
+    it('Should return a 422 when workout description is not provided', () => {
+      const invalidWorkout = {
+        workout_name: 'Abdomen Fat Remover',
+        level: 'Beginner',
+        exercises: [
+          {
+            exercise_id: 1,
+            reps: 10,
+            position: 1,
+          },
+
+          {
+            exercise_id: 1,
+            reps: 12,
+            position: 2,
+          },
+
+          {
+            exercise_id: 1,
+            reps: 15,
+            position: 3,
+          },
+
+          {
+            exercise_id: 2,
+            reps: 10,
+            position: 1,
+          },
+        ],
+      };
+      return request(server)
+        .post('/workouts')
+        .set('Authorization', `Bearer ${token}`)
+        .send(invalidWorkout)
+        .then(res => {
+          expect(res.statusCode).toBe(422);
+          expect(typeof res.body).toBe('object');
+        });
+    });
+
+    it('Should return a 401 when invalid token is provided', () => {
+      const invalidWorkout = {
+        workout_name: 'Abdomen Fat Remover',
+        level: 'Beginner',
+        exercises: [
+          {
+            exercise_id: 1,
+            reps: 10,
+            position: 1,
+          },
+
+          {
+            exercise_id: 1,
+            reps: 12,
+            position: 2,
+          },
+
+          {
+            exercise_id: 1,
+            reps: 15,
+            position: 3,
+          },
+
+          {
+            exercise_id: 2,
+            reps: 10,
+            position: 1,
+          },
+        ],
+      };
+      token = 'jhgfvgbhkj908767565wrtyu';
+      return request(server)
+        .post('/workouts')
+        .set('Authorization', `Bearer ${token}`)
+        .send(invalidWorkout)
+        .then(res => {
+          expect(res.statusCode).toBe(401);
+          expect(typeof res.body).toBe('object');
         });
     });
   });
