@@ -40,6 +40,7 @@ router.get(
 
 router.post(
   '/',
+  checkLoggedIn,
   workoutsValidator.validateWorkoutBody,
   workoutsController.createWorkout,
 );
