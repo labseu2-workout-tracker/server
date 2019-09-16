@@ -205,4 +205,52 @@ describe('Workouts', () => {
         });
     });
   });
+
+  describe('POST /workouts', () => {
+    const newWorkout = {
+      workout_name: 'Abdomen Fat Remover',
+      workout_description: 'Absolutely removes all the unwanted fat in your belly',
+      level: 'Beginner',
+      exercises: [
+        {
+          exercise_id: 1,
+          reps: 10,
+          position: 1,
+        },
+
+        {
+          exercise_id: 1,
+          reps: 12,
+          position: 2,
+        },
+
+        {
+          exercise_id: 1,
+          reps: 15,
+          position: 3,
+        },
+
+        {
+          exercise_id: 2,
+          reps: 10,
+          position: 1,
+        },
+      ],
+    };
+    it('Should return the added workout alongside the associated exercises including reps and sets', () => {
+      return request(server)
+        .post('/workouts')
+        .set('Authorization', `Bearer ${token}`)
+        .send(newWorkout)
+        .then(res => {
+          // console.log(res.text);
+          expect(res.statusCode).toBe(201);
+          expect(typeof res.body).toBe('object');
+          expect(typeof res.body.exercises).toBe('object');
+          expect(res.body).toHaveProperty('workout_name');
+          expect(res.body).toHaveProperty('workout_description');
+          expect(res.body).toHaveProperty('exercises');
+        });
+    });
+  });
 });
