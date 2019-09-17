@@ -1,4 +1,3 @@
-const dotenv = require('dotenv');
 const { check, validationResult } = require('express-validator');
 
 const validateWorkoutBody = [
@@ -16,6 +15,13 @@ const validateWorkoutBody = [
     .withMessage('Workout description cannot  be empty')
     .trim(),
 
+  check('exercises')
+    .isArray()
+    .withMessage('You must provide an array of exercises')
+    .not()
+    .isEmpty()
+    .withMessage('Exercises for workout must be provided'),
+
   check('level')
     .isIn(['Beginner', 'Intermediate', 'Expert'])
     .optional(),
@@ -27,9 +33,16 @@ const validateWorkoutBody = [
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(422).json(errors.array());
+      const errorMessage = {};
+      errors.array().forEach(error => {
+        errorMessage[error.param] = error.msg;
+      });
+      return res.status(400).json({
+        status: 400,
+        errorMessage,
+      });
     }
-    next();
+    return next();
   },
 ];
 
