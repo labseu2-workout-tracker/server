@@ -10,20 +10,14 @@ function findWorkoutById(id) {
 async function findWorkoutExercises(id) {
   const workout = await findWorkoutById(id);
   if (workout)
-    workout.exercises = await db('workouts-exercises')
+    workout.exercises = await db('workout-sets')
       .join('exercises', 'exercise_id', '=', 'exercises.id')
       .join('workouts', 'workout_id', '=', 'workouts.id')
-      .join(
-        'sets',
-        'workouts-exercises.id',
-        '=',
-        'workout_exercise_id',
-      )
       .where('workout_id', '=', id)
       .select(
         'exercises.exercise_name',
-        'sets.reps',
-        'sets.duration',
+        'workout-sets.reps',
+        'workout-sets.duration',
         'exercises.description',
         'exercises.video',
         'exercises.muscle',
@@ -81,6 +75,18 @@ function getWorkoutHistory(userId, dayLimit) {
     .select('id', 'session_start', 'session_end', 'workout_id');
 }
 
+async function createWorkout(workout, detailedSets) {
+  const [newWorkout] = await db('workouts').insert(workout, '*');
+
+  detailedSets.forEach(set => {
+    // eslint-disable-next-line no-param-reassign
+    set.workout_id = newWorkout.id;
+  });
+
+  await db('workout-sets').insert(detailedSets, '*');
+  return findWorkoutExercises(newWorkout.id);
+}
+
 module.exports = {
   findWorkoutExercises,
   findWorkoutById,
@@ -89,4 +95,5 @@ module.exports = {
   endWorkoutSession,
   findWorkoutSessionByUserId,
   getWorkoutHistory,
+  createWorkout,
 };

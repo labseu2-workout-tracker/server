@@ -3,6 +3,7 @@ const validateId = require('../middlewares/validateId');
 const workoutsController = require('./workoutsController');
 const checkLoggedIn = require('../middlewares/restrictedMiddleware');
 const checkWorkoutSession = require('../middlewares/checkWorkoutSession');
+const workoutsValidator = require('./workoutsHelper');
 
 const router = express.Router();
 
@@ -35,6 +36,13 @@ router.get(
   '/history',
   checkLoggedIn,
   workoutsController.getWorkoutHistory,
+);
+
+router.post(
+  '/',
+  checkLoggedIn,
+  workoutsValidator.validateWorkoutBody,
+  workoutsController.createWorkout,
 );
 
 module.exports = router;
