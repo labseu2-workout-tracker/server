@@ -29,17 +29,28 @@ const validateUser = [
     .trim(),
   check('username')
     .isLength({ min: 2 })
+    .isAlphanumeric()
     .withMessage(
-      'Please add a username with at least 2 characters long.',
+      'Please add an alphanumeric username with at least 2 characters long.',
+    )
+    .trim(),
+  check('fullname')
+    .isLength({ min: 2 })
+    .withMessage(
+      'Please add an alphanumeric fullname with at least 2 characters long.',
     )
     .trim(),
 
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      const errorMessage = {};
+      errors.array().forEach(i => {
+        errorMessage[i.param] = i.msg;
+      });
       res.status(400).json({
         status: 400,
-        error: errors.array().map(i => i.msg),
+        errorMessage,
       });
     } else next();
   },
