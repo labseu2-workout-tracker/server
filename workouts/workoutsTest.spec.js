@@ -206,7 +206,7 @@ describe('Workouts', () => {
     });
   });
 
-  describe('POST /workouts', () => {
+  describe('POST /workouts - Create new workout', () => {
     const newWorkout = {
       workout_name: 'Abdomen Fat Remover',
       workout_description:
@@ -253,7 +253,7 @@ describe('Workouts', () => {
         });
     });
 
-    it('Should return a 422 when workout name is not provided', () => {
+    it('Should return a 400 when workout name is not provided', () => {
       const invalidWorkout = {
         workout_description:
           'Absolutely removes all the unwanted fat in your belly',
@@ -289,12 +289,12 @@ describe('Workouts', () => {
         .set('Authorization', `Bearer ${token}`)
         .send(invalidWorkout)
         .then(res => {
-          expect(res.statusCode).toBe(422);
+          expect(res.statusCode).toBe(400);
           expect(typeof res.body).toBe('object');
         });
     });
 
-    it('Should return a 422 when workout description is not provided', () => {
+    it('Should return a 400 when workout description is not provided', () => {
       const invalidWorkout = {
         workout_name: 'Abdomen Fat Remover',
         level: 'Beginner',
@@ -329,7 +329,7 @@ describe('Workouts', () => {
         .set('Authorization', `Bearer ${token}`)
         .send(invalidWorkout)
         .then(res => {
-          expect(res.statusCode).toBe(422);
+          expect(res.statusCode).toBe(400);
           expect(typeof res.body).toBe('object');
         });
     });
@@ -365,6 +365,23 @@ describe('Workouts', () => {
         ],
       };
       token = 'jhgfvgbhkj908767565wrtyu';
+      return request(server)
+        .post('/workouts')
+        .set('Authorization', `Bearer ${token}`)
+        .send(invalidWorkout)
+        .then(res => {
+          expect(res.statusCode).toBe(401);
+          expect(typeof res.body).toBe('object');
+        });
+    });
+
+    it('Should return a 401 when exercises are not provided', () => {
+      const invalidWorkout = {
+        workout_name: 'Abdomen Fat Remover',
+        workout_description:
+          'Absolutely removes all the unwanted fat in your belly',
+        level: 'Beginner',
+      };
       return request(server)
         .post('/workouts')
         .set('Authorization', `Bearer ${token}`)
