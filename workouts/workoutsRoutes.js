@@ -51,4 +51,10 @@ router.post(
   workoutsController.save_Workouts,
 );
 
+router.get(
+  '/all-saved',
+  checkLoggedIn,
+  workoutsController.get_saved_workouts,
+);
+
 module.exports = router;

@@ -97,6 +97,10 @@ async function saveWorkouts(userId, workoutId) {
     .select('*');
 }
 
+function getSavedWorkouts() {
+  return db('saved_workouts');
+}
+
 module.exports = {
   findWorkoutExercises,
   findWorkoutById,
@@ -107,4 +111,5 @@ module.exports = {
   getWorkoutHistory,
   createWorkout,
   saveWorkouts,
+  getSavedWorkouts,
 };
