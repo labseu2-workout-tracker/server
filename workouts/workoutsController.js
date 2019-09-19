@@ -126,10 +126,10 @@ exports.createWorkout = async (req, res) => {
 };
 
 exports.save_Workouts = async (req, res) => {
-  const saveWorkout = req.body;
+  const { user_id } = req.body;
   try {
-    const saved = await saveWorkout.saveWorkouts(saveWorkout);
-    return res.status(200).json(saved);
+    const saved = await workoutModel.saveWorkouts(req.body);
+    return res.status(200).json({ saved, user_id });
   } catch (error) {
     return res.status(500).json({
       errorMessage: error,

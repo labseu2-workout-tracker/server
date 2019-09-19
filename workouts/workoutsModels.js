@@ -87,9 +87,11 @@ async function createWorkout(workout, detailedSets) {
   return findWorkoutExercises(newWorkout.id);
 }
 
-async function saveWorkouts(workout, userId) {
-  await db('saved-workouts').insert(workout);
-  return db('saved-workouts').where('user_id', '=', userId);
+async function saveWorkouts(workout) {
+  await db('saved_workouts').insert(workout);
+  return db('saved_workouts')
+    .join('workouts', 'workouts_id', '=', 'workouts.id')
+    .select('*');
 }
 
 module.exports = {
