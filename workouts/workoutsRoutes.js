@@ -45,4 +45,6 @@ router.post(
   workoutsController.createWorkout,
 );
 
+router.post('/save-workout', workoutsController.save_Workouts);
+
 module.exports = router;

@@ -105,7 +105,7 @@ exports.createWorkout = async (req, res) => {
     workout_description,
     level,
     image_url,
-    user_id
+    user_id,
   };
   try {
     const newWorkoutInfo = await workoutModel.createWorkout(
@@ -118,6 +118,18 @@ exports.createWorkout = async (req, res) => {
       });
     }
     return res.status(201).json(newWorkoutInfo);
+  } catch (error) {
+    return res.status(500).json({
+      errorMessage: error,
+    });
+  }
+};
+
+exports.save_Workouts = async (req, res) => {
+  const saveWorkout = req.body;
+  try {
+    const saved = await saveWorkout.saveWorkouts(saveWorkout);
+    return res.status(200).json(saved);
   } catch (error) {
     return res.status(500).json({
       errorMessage: error,

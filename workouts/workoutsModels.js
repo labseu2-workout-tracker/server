@@ -87,6 +87,11 @@ async function createWorkout(workout, detailedSets) {
   return findWorkoutExercises(newWorkout.id);
 }
 
+async function saveWorkouts(workout, userId) {
+  await db('saved-workouts').insert(workout);
+  return db('saved-workouts').where('user_id', '=', userId);
+}
+
 module.exports = {
   findWorkoutExercises,
   findWorkoutById,
@@ -96,4 +101,5 @@ module.exports = {
   findWorkoutSessionByUserId,
   getWorkoutHistory,
   createWorkout,
+  saveWorkouts,
 };
