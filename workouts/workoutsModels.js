@@ -93,7 +93,7 @@ async function saveWorkouts(userId, workoutId) {
     '=',
     userId,
   );
-  let check = true;
+  let checkIfIdExists = true;
  
 }
 
