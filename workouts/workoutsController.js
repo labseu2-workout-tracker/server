@@ -143,3 +143,15 @@ exports.save_Workouts = async (req, res) => {
     });
   }
 };
+
+exports.get_saved_workouts = async (req, res) => {
+  const { user_id } = req.body;
+  try {
+    const allSavedWorkouts = await workoutModel.getSavedWorkouts(
+      user_id,
+    );
+    return res.status(200).json(allSavedWorkouts);
+  } catch (error) {
+    return res.status(500).json({ errorMessage: error });
+  }
+ };
