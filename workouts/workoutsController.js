@@ -119,6 +119,7 @@ exports.createWorkout = async (req, res) => {
     }
     return res.status(201).json(newWorkoutInfo);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({
       errorMessage: error,
     });
