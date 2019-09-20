@@ -125,3 +125,21 @@ exports.createWorkout = async (req, res) => {
   }
 };
 
+exports.save_Workouts = async (req, res) => {
+  const { user_id, workouts_id } = req.body;
+  try {
+    const saved = await workoutModel.saveWorkouts(
+      user_id,
+      workouts_id,
+    );
+    return saved
+      ? res.status(200).json({ saved })
+      : res
+          .status(400)
+          .json({ message: 'This workout already exists!' });
+  } catch (error) {
+    return res.status(500).json({
+      errorMessage: error,
+    });
+  }
+};
