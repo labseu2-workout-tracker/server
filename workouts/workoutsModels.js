@@ -107,6 +107,8 @@ async function saveWorkouts(userId, workoutId) {
         user_id: userId,
         workouts_id: workoutId,
       });
+  }  else {
+    return null;
   }
 }
 
