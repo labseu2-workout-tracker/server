@@ -87,7 +87,9 @@ async function createWorkout(workout, detailedSets) {
   return findWorkoutExercises(newWorkout.id);
 }
 
-
+async function saveWorkouts(userId, workoutId) {
+ 
+}
 
 module.exports = {
   findWorkoutExercises,
