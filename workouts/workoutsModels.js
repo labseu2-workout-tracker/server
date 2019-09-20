@@ -94,7 +94,13 @@ async function saveWorkouts(userId, workoutId) {
     userId,
   );
   let checkIfIdExists = true;
- 
+  checkWorkoutId.map(data => {
+    if (data.workouts_id === workoutId) {
+      checkIfIdExists = false;
+    }
+    return null;
+  });
+
 }
 
 module.exports = {
