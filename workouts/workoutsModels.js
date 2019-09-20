@@ -100,14 +100,14 @@ async function saveWorkouts(userId, workoutId) {
     }
     return null;
   });
-  if (check) {
+  if (checkIfIdExists) {
     return db('saved_workouts')
       .returning(['user_id', 'workouts_id'])
       .insert({
         user_id: userId,
         workouts_id: workoutId,
       });
-  }  else {
+  } else {
     return null;
   }
 }
