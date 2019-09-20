@@ -154,4 +154,4 @@ exports.get_saved_workouts = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ errorMessage: error });
   }
- };
+};
