@@ -4,6 +4,7 @@ exports.up = function(knex) {
     savedWorkout
       .integer('workouts_id')
       .unsigned()
+      .notNullable()
       .references('id')
       .inTable('workouts')
       .onUpdate('CASCADE')
@@ -11,6 +12,7 @@ exports.up = function(knex) {
     savedWorkout
       .integer('user_id')
       .unsigned()
+      .notNullable()
       .references('id')
       .inTable('users')
       .onUpdate('CASCADE')
