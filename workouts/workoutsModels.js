@@ -88,7 +88,12 @@ async function createWorkout(workout, detailedSets) {
 }
 
 async function saveWorkouts(userId, workoutId) {
- 
+  const checkWorkoutId = await db('saved_workouts').where(
+    'user_id',
+    '=',
+    userId,
+  );
+  
 }
 
 module.exports = {
