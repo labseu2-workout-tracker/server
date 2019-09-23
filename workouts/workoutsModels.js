@@ -123,6 +123,12 @@ async function getSavedWorkouts(userId) {
   );
 }
 
+async function deleteSavedWorkout(id) {
+  return db('saved_workouts')
+    .where({ id })
+    .del();
+}
+
 module.exports = {
   findWorkoutExercises,
   findWorkoutById,
@@ -134,4 +140,5 @@ module.exports = {
   createWorkout,
   saveWorkouts,
   getSavedWorkouts,
+  deleteSavedWorkout,
 };
