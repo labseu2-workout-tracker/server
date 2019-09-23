@@ -153,3 +153,13 @@ exports.get_saved_workouts = async (req, res) => {
     return res.status(500).json({ errorMessage: error });
   }
 };
+
+exports.del_saved_workout = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const delWorkout = await workoutModel.deleteSavedWorkout(id);
+    return res.status(200).json(delWorkout);
+  } catch (error) {
+    return res.status(500).json({ errorMessage: error });
+  }
+};
