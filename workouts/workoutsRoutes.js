@@ -57,7 +57,7 @@ router.get(
   workoutsController.get_saved_workouts,
 );
 
-router.del(
+router.delete(
   '/all-saved/:id',
   checkLoggedIn,
   workoutsController.del_saved_workout,
