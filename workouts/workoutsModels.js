@@ -111,7 +111,16 @@ async function saveWorkouts(userId, workoutId) {
 }
 
 async function getSavedWorkouts(userId) {
+  const joinSavedWithWorkouts = await db('saved_workouts').join(
+    'workouts',
+    'workouts.id',
+    '=',
+    'workouts_id',
+  );
 
+  return joinSavedWithWorkouts.filter(
+    workout => workout.user_id !== userId,
+  );
 }
 
 module.exports = {
