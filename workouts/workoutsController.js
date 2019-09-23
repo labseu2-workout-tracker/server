@@ -155,9 +155,12 @@ exports.get_saved_workouts = async (req, res) => {
 };
 
 exports.del_saved_workout = async (req, res) => {
-  const { id } = req.params;
+  const { user_id, workouts_id } = req.body;
   try {
-    const delWorkout = await workoutModel.deleteSavedWorkout(id);
+    const delWorkout = await workoutModel.deleteSavedWorkout(
+      user_id,
+      workouts_id,
+    );
     return res.status(200).json(delWorkout);
   } catch (error) {
     return res.status(500).json({ errorMessage: error });

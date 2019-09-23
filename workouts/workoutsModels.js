@@ -110,22 +110,16 @@ async function saveWorkouts(userId, workoutId) {
     : null;
 }
 
-async function getSavedWorkouts(userId) {
-  const joinSavedWithWorkouts = await db('saved_workouts').join(
-    'workouts',
-    'workouts.id',
-    '=',
-    'workouts_id',
-  );
-
-  return joinSavedWithWorkouts.filter(
-    workout => workout.user_id !== userId,
-  );
+function getSavedWorkouts(userId) {
+  return db('saved_workouts')
+    .join('workouts', 'workouts.id', '=', 'workouts_id')
+    .where('saved_workouts.user_id', '=', userId);
 }
 
-async function deleteSavedWorkout(id) {
+function deleteSavedWorkout(userId, workoutId) {
   return db('saved_workouts')
-    .where({ id })
+    .where('user_id', '=', userId)
+    .where('workouts_id', '=', workoutId)
     .del();
 }
 

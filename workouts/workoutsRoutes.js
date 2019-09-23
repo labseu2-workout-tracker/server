@@ -58,7 +58,7 @@ router.get(
 );
 
 router.delete(
-  '/all-saved/:id',
+  '/all-saved',
   checkLoggedIn,
   workoutsController.del_saved_workout,
 );
