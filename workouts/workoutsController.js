@@ -132,7 +132,11 @@ exports.save_Workouts = async (req, res) => {
       user_id,
       workouts_id,
     );
-    return res.status(200).json({ saved, user_id });
+    return saved
+      ? res.status(200).json({ saved })
+      : res
+          .status(400)
+          .json({ message: 'This workout already exists!' });
   } catch (error) {
     return res.status(500).json({
       errorMessage: error,
@@ -140,9 +144,10 @@ exports.save_Workouts = async (req, res) => {
   }
 };
 
-exports.get_saved_workouts = async (_, res) => {
+exports.get_saved_workouts = async (req, res) => {
+  const { id } = req.params;
   try {
-    const allSavedWorkouts = await workoutModel.getSavedWorkouts();
+    const allSavedWorkouts = await workoutModel.getSavedWorkouts(id);
     return res.status(200).json(allSavedWorkouts);
   } catch (error) {
     return res.status(500).json({ errorMessage: error });

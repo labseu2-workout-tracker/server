@@ -88,17 +88,39 @@ async function createWorkout(workout, detailedSets) {
 }
 
 async function saveWorkouts(userId, workoutId) {
-  await db('saved_workouts').insert({
-    user_id: userId,
-    workouts_id: workoutId,
+  const checkWorkoutId = await db('saved_workouts').where(
+    'user_id',
+    '=',
+    userId,
+  );
+  let checkIfIdExists = true;
+  checkWorkoutId.map(data => {
+    if (data.workouts_id === workoutId) {
+      checkIfIdExists = false;
+    }
+    return null;
   });
-  return db('saved_workouts')
-    .join('workouts', 'workouts_id', '=', 'workouts.id')
-    .select('*');
+  return checkIfIdExists
+    ? db('saved_workouts')
+        .returning(['user_id', 'workouts_id'])
+        .insert({
+          user_id: userId,
+          workouts_id: workoutId,
+        })
+    : null;
 }
 
-function getSavedWorkouts() {
-  return db('saved_workouts');
+async function getSavedWorkouts(userId) {
+  const joinSavedWithWorkouts = await db('saved_workouts').join(
+    'workouts',
+    'workouts.id',
+    '=',
+    'workouts_id',
+  );
+
+  return joinSavedWithWorkouts.filter(
+    workout => workout.user_id !== userId,
+  );
 }
 
 module.exports = {
