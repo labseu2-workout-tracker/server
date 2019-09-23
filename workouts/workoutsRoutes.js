@@ -52,7 +52,7 @@ router.post(
 );
 
 router.get(
-  '/all-saved',
+  '/all-saved/:id',
   checkLoggedIn,
   workoutsController.get_saved_workouts,
 );

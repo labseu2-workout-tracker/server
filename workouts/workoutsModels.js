@@ -110,8 +110,8 @@ async function saveWorkouts(userId, workoutId) {
     : null;
 }
 
-function getSavedWorkouts(userId) {
-  return db('saved_workouts').where('user_id', '=', userId);
+async function getSavedWorkouts(userId) {
+
 }
 
 module.exports = {
