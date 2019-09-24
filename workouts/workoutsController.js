@@ -92,6 +92,7 @@ exports.getWorkoutHistory = async (req, res) => {
 };
 
 exports.createWorkout = async (req, res) => {
+  console.log(req.body);
   const {
     workout_name,
     workout_description,
