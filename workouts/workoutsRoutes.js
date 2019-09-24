@@ -45,4 +45,22 @@ router.post(
   workoutsController.createWorkout,
 );
 
+router.post(
+  '/save-workout',
+  checkLoggedIn,
+  workoutsController.save_Workouts,
+);
+
+router.get(
+  '/all-saved/:id',
+  checkLoggedIn,
+  workoutsController.get_saved_workouts,
+);
+
+router.delete(
+  '/all-saved',
+  checkLoggedIn,
+  workoutsController.del_saved_workout,
+);
+
 module.exports = router;

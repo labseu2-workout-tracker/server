@@ -87,6 +87,42 @@ async function createWorkout(workout, detailedSets) {
   return findWorkoutExercises(newWorkout.id);
 }
 
+async function saveWorkouts(userId, workoutId) {
+  const checkWorkoutId = await db('saved_workouts').where(
+    'user_id',
+    '=',
+    userId,
+  );
+  let checkIfIdExists = true;
+  checkWorkoutId.map(data => {
+    if (data.workouts_id === workoutId) {
+      checkIfIdExists = false;
+    }
+    return null;
+  });
+  return checkIfIdExists
+    ? db('saved_workouts')
+        .returning(['user_id', 'workouts_id'])
+        .insert({
+          user_id: userId,
+          workouts_id: workoutId,
+        })
+    : null;
+}
+
+function getSavedWorkouts(userId) {
+  return db('saved_workouts')
+    .join('workouts', 'workouts.id', '=', 'workouts_id')
+    .where('saved_workouts.user_id', '=', userId);
+}
+
+function deleteSavedWorkout(userId, workoutId) {
+  return db('saved_workouts')
+    .where('user_id', '=', userId)
+    .where('workouts_id', '=', workoutId)
+    .del();
+}
+
 module.exports = {
   findWorkoutExercises,
   findWorkoutById,
@@ -96,4 +132,7 @@ module.exports = {
   findWorkoutSessionByUserId,
   getWorkoutHistory,
   createWorkout,
+  saveWorkouts,
+  getSavedWorkouts,
+  deleteSavedWorkout,
 };
