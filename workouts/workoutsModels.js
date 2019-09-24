@@ -110,17 +110,17 @@ async function saveWorkouts(userId, workoutId) {
     : null;
 }
 
-async function getSavedWorkouts(userId) {
-  const joinSavedWithWorkouts = await db('saved_workouts').join(
-    'workouts',
-    'workouts.id',
-    '=',
-    'workouts_id',
-  );
+function getSavedWorkouts(userId) {
+  return db('saved_workouts')
+    .join('workouts', 'workouts.id', '=', 'workouts_id')
+    .where('saved_workouts.user_id', '=', userId);
+}
 
-  return joinSavedWithWorkouts.filter(
-    workout => workout.user_id !== userId,
-  );
+function deleteSavedWorkout(userId, workoutId) {
+  return db('saved_workouts')
+    .where('user_id', '=', userId)
+    .where('workouts_id', '=', workoutId)
+    .del();
 }
 
 module.exports = {
@@ -134,4 +134,5 @@ module.exports = {
   createWorkout,
   saveWorkouts,
   getSavedWorkouts,
+  deleteSavedWorkout,
 };

@@ -57,4 +57,10 @@ router.get(
   workoutsController.get_saved_workouts,
 );
 
+router.delete(
+  '/all-saved',
+  checkLoggedIn,
+  workoutsController.del_saved_workout,
+);
+
 module.exports = router;
