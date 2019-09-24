@@ -83,13 +83,11 @@ function getWorkoutHistory(userId, dayLimit) {
 
 async function createWorkout(workout, detailedSets) {
   const [newWorkout] = await db('workouts').insert(workout, '*');
-  console.log(newWorkout);
   detailedSets.forEach(set => {
     // eslint-disable-next-line no-param-reassign
     set.workout_id = newWorkout.id;
   });
 
-  console.log(detailedSets);
   await db('workout-sets').insert(detailedSets, '*');
   return findWorkoutExercises(newWorkout.id);
 }
