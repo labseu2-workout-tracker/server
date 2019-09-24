@@ -78,8 +78,6 @@ function getWorkoutHistory(userId, dayLimit) {
 async function createWorkout(workout, detailedSets) {
   const [newWorkout] = await db('workouts').insert(workout, '*');
 
-  console.log(newWorkout);
-
   detailedSets.forEach(set => {
     // eslint-disable-next-line no-param-reassign
     set.workout_id = newWorkout.id;

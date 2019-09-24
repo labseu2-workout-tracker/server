@@ -119,7 +119,7 @@ exports.createWorkout = async (req, res) => {
     }
     return res.status(201).json(newWorkoutInfo);
   } catch (error) {
-    console.log('Catched Error', error)
+    console.log('Catched Error', error); // <--- This can be removed once the issue with PR 48 has been resolved.
     return res.status(500).json({
       errorMessage: error,
     });
