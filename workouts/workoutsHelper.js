@@ -2,14 +2,14 @@ const { check, validationResult } = require('express-validator');
 
 const validateWorkoutBody = [
   check('workout_name')
-    .matches(/^[a-z\d\-_\s]+$/i)
+    .matches(/^[a-z\d\-_\s']+$/i)
     .not()
     .isEmpty()
-    .withMessage('Workout name cannot  be empty')
+    .withMessage('Workout name cannot be empty')
     .trim(),
 
   check('workout_description')
-    .matches(/^[a-z\d\-_\s]+$/i)
+    .matches(/^[a-z\d\-_\s']+$/i)
     .not()
     .isEmpty()
     .withMessage('Workout description cannot  be empty')
