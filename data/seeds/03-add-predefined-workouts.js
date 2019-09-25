@@ -38,6 +38,13 @@ exports.seed = function(knex) {
           image_url:
             'https://www.bodybuilding.com/exercises/exerciseImages/sequences/4361/Female/l/4361_2.jpg',
         },
+         {
+          workout_name: 'Upper-Chest',
+          workout_description: `If you want to sport a powerful, thick, and full chest, then you have to start at the top. In other words, make your upper pecs the top priority.`,
+          level: 'Expert',
+          image_url:
+            'https://www.bodybuilding.com/images/2018/april/upper-chest-training-made-simple-header-muscletech-400x225.jpg',
+        },
       ]);
     });
 };
