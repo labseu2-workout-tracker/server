@@ -1,8 +1,9 @@
 const workoutModel = require('./workoutsModels.js');
 
 exports.getAllWorkout = async (req, res) => {
+  const user_id = req.userId;
   try {
-    const workouts = await workoutModel.getWorkouts();
+    const workouts = await workoutModel.getWorkouts(user_id);
     return res.status(200).json(workouts);
   } catch (error) {
     return res.status(500).json({
@@ -127,7 +128,8 @@ exports.createWorkout = async (req, res) => {
 };
 
 exports.save_Workouts = async (req, res) => {
-  const { user_id, workouts_id } = req.body;
+  const { workouts_id } = req.body;
+  const user_id = req.userId;
   try {
     const saved = await workoutModel.saveWorkouts(
       user_id,

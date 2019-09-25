@@ -35,8 +35,10 @@ async function findWorkoutExercises(id) {
   return workout;
 }
 
-function getWorkouts() {
-  return db('workouts');
+function getWorkouts(userId) {
+  return db('workouts').where(function() {
+    this.where('user_id', userId).orWhere('user_id', null);
+  });
 }
 
 async function startWorkoutSession(session) {
