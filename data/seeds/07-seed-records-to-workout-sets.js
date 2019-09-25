@@ -24,6 +24,10 @@ exports.seed = function(knex) {
         .select('id')
         .where('workout_name', '=', 'Lower-Body Blast')
         .first();
+      const upperChest = await db('workouts')
+        .select('id')
+        .where('workout_name', '=', 'Upper-Chest')
+        .first();
       return knex('workout-sets').insert([
         // Exercises and sets for Chest and Shoulder Smackdown
         // ===> Exercise 1 <=== //
@@ -1297,6 +1301,63 @@ exports.seed = function(knex) {
           exercise_id: 530,
           workout_id: lowerBody.id,
           reps: 8,
+          position: 3,
+        },
+        //-------------Upper-chest exercise-------------------
+        //------------first set-------------------------------
+        {
+          exercise_id: 16,
+          workout_id: upperChest.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 55,
+          workout_id: upperChest.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 31,
+          workout_id: upperChest.id,
+          position: 1,
+        },
+
+        // ------------second set---------------
+         {
+          exercise_id: 16,
+          workout_id: upperChest.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 55,
+          workout_id: upperChest.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 31,
+          workout_id: upperChest.id,
+          position: 2,
+        },
+
+        //---------third set--------
+         {
+          exercise_id: 16,
+          workout_id: upperChest.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 55,
+          workout_id: upperChest.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 31,
+          workout_id: upperChest.id,
           position: 3,
         },
       ]);
