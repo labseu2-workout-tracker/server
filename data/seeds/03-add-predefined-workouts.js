@@ -45,6 +45,13 @@ exports.seed = function(knex) {
           image_url:
             'https://www.bodybuilding.com/images/2018/april/upper-chest-training-made-simple-header-muscletech-400x225.jpg',
         },
+        {
+          workout_name: 'Biceps, Triceps and Calves',
+          workout_description: ` This is a workout that allows for a great deal of flexibility on your part with overall structural design` ,
+          level: 'Expert',
+          image_url:
+            'https://www.bodybuilding.com/exercises/exerciseImages/sequences/147/Male/100sq/147_2.jpg',
+        },
       ]);
     });
 };
