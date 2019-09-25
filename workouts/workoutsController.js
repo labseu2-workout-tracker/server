@@ -105,7 +105,7 @@ exports.createWorkout = async (req, res) => {
     workout_description,
     level,
     image_url,
-    // user_id, <---- This is causing the following error to be thrown in staging - Catched Error { error: column "user_id" of relation "workouts" does not exist
+    user_id,
   };
   try {
     const newWorkoutInfo = await workoutModel.createWorkout(
