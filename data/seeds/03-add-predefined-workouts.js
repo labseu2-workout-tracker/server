@@ -52,6 +52,13 @@ exports.seed = function(knex) {
           image_url:
             'https://www.bodybuilding.com/exercises/exerciseImages/sequences/147/Male/100sq/147_2.jpg',
         },
+        {
+          workout_name: 'Chest and Triceps',
+          workout_description: ` This is a workout that allows for a great deal of flexibility on your part with overall structural design` ,
+          level: 'Expert',
+          image_url:
+            'https://www.bodybuilding.com/exercises/exerciseImages/sequences/380/Male/100sq/380_2.jpg',
+        },
       ]);
     });
 };
