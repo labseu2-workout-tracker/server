@@ -24,6 +24,18 @@ exports.seed = function(knex) {
         .select('id')
         .where('workout_name', '=', 'Lower-Body Blast')
         .first();
+      const upperChest = await db('workouts')
+        .select('id')
+        .where('workout_name', '=', 'Upper-Chest')
+        .first();
+      const bicepsTricepsCalves = await db('workouts')
+        .select('id')
+        .where('workout_name', '=', 'Biceps, Triceps and Calves')
+        .first();
+      const chestTriceps = await db('workouts')
+        .select('id')
+        .where('workout_name', '=', 'Chest and Triceps')
+        .first();
       return knex('workout-sets').insert([
         // Exercises and sets for Chest and Shoulder Smackdown
         // ===> Exercise 1 <=== //
@@ -1298,6 +1310,445 @@ exports.seed = function(knex) {
           workout_id: lowerBody.id,
           reps: 8,
           position: 3,
+        },
+        // -------------Upper-chest exercise-------------------
+        // ------------first set-------------------------------
+        {
+          exercise_id: 16,
+          workout_id: upperChest.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 55,
+          workout_id: upperChest.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 31,
+          workout_id: upperChest.id,
+          position: 1,
+        },
+
+        // ------------second set---------------
+        {
+          exercise_id: 16,
+          workout_id: upperChest.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 55,
+          workout_id: upperChest.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 31,
+          workout_id: upperChest.id,
+          position: 2,
+        },
+
+        // ---------third set--------
+        {
+          exercise_id: 16,
+          workout_id: upperChest.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 55,
+          workout_id: upperChest.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 31,
+          workout_id: upperChest.id,
+          position: 3,
+        },
+
+        // ---Biceps, Triceps and Calves
+
+        // ------first set-----------
+        {
+          exercise_id: 815,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 811,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 838,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 568,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 579,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 611,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 540,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 538,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 12,
+          position: 1,
+        },
+
+        // ----second set--------
+        {
+          exercise_id: 815,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 811,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 838,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 568,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 579,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 611,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 540,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 538,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 10,
+          position: 2,
+        },
+
+        // -----------third set-----------
+
+        {
+          exercise_id: 815,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 811,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 838,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 568,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 579,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 611,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 540,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 538,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 8,
+          position: 3,
+        },
+
+        // ------fourth set-----
+        {
+          exercise_id: 838,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 10,
+          position: 4,
+        },
+        {
+          exercise_id: 538,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 10,
+          position: 4,
+        },
+
+        // ----fifth set------
+        {
+          exercise_id: 838,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 8,
+          position: 5,
+        },
+        {
+          exercise_id: 538,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 8,
+          position: 5,
+        },
+
+        // ------sixth set--------
+        {
+          exercise_id: 838,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 12,
+          position: 4,
+        },
+        {
+          exercise_id: 538,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 12,
+          position: 6,
+        },
+
+        // -----seventh set-----
+        {
+          exercise_id: 838,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 8,
+          position: 7,
+        },
+        {
+          exercise_id: 538,
+          workout_id: bicepsTricepsCalves.id,
+          reps: 8,
+          position: 7,
+        },
+
+        // chest triceps
+
+        // ------first set-----------
+        {
+          exercise_id: 1,
+          workout_id: chestTriceps.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 4,
+          workout_id: chestTriceps.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 17,
+          workout_id: chestTriceps.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 568,
+          workout_id: chestTriceps.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 579,
+          workout_id: chestTriceps.id,
+          reps: 12,
+          position: 1,
+        },
+        {
+          exercise_id: 611,
+          workout_id: chestTriceps.id,
+          reps: 12,
+          position: 1,
+        },
+
+        // --------second set-----
+
+        {
+          exercise_id: 1,
+          workout_id: chestTriceps.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 4,
+          workout_id: chestTriceps.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 17,
+          workout_id: chestTriceps.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 568,
+          workout_id: chestTriceps.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 579,
+          workout_id: chestTriceps.id,
+          reps: 10,
+          position: 2,
+        },
+        {
+          exercise_id: 611,
+          workout_id: chestTriceps.id,
+          reps: 10,
+          position: 2,
+        },
+
+        // --------third set----------
+        {
+          exercise_id: 1,
+          workout_id: chestTriceps.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 4,
+          workout_id: chestTriceps.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 17,
+          workout_id: chestTriceps.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 568,
+          workout_id: chestTriceps.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 579,
+          workout_id: chestTriceps.id,
+          reps: 8,
+          position: 3,
+        },
+        {
+          exercise_id: 611,
+          workout_id: chestTriceps.id,
+          reps: 8,
+          position: 3,
+        },
+
+        // ------fourth set----------
+        {
+          exercise_id: 17,
+          workout_id: chestTriceps.id,
+          reps: 10,
+          position: 4,
+        },
+        {
+          exercise_id: 611,
+          workout_id: chestTriceps.id,
+          reps: 10,
+          position: 4,
+        },
+
+        // ------------fifth set-----
+        {
+          exercise_id: 17,
+          workout_id: chestTriceps.id,
+          reps: 8,
+          position: 5,
+        },
+        {
+          exercise_id: 611,
+          workout_id: chestTriceps.id,
+          reps: 8,
+          position: 5,
+        },
+
+        // ----------sixth set------
+        {
+          exercise_id: 17,
+          workout_id: chestTriceps.id,
+          reps: 8,
+          position: 6,
+        },
+        {
+          exercise_id: 611,
+          workout_id: chestTriceps.id,
+          reps: 8,
+          position: 6,
+        },
+
+        // --------------seventh set-----------
+        {
+          exercise_id: 17,
+          workout_id: chestTriceps.id,
+          reps: 12,
+          position: 7,
+        },
+        {
+          exercise_id: 611,
+          workout_id: chestTriceps.id,
+          reps: 12,
+          position: 7,
         },
       ]);
     });
