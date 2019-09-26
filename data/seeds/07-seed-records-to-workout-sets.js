@@ -32,8 +32,8 @@ exports.seed = function(knex) {
         .select('id')
         .where('workout_name', '=', 'Biceps, Triceps and Calves')
         .first();
-      const chestTriceps = await db('workouts');
-      select('id')
+      const chestTriceps = await db('workouts')
+        .select('id')
         .where('workout_name', '=', 'Chest and Triceps')
         .first();
       return knex('workout-sets').insert([

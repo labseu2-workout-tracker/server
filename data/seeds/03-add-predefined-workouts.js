@@ -38,7 +38,7 @@ exports.seed = function(knex) {
           image_url:
             'https://www.bodybuilding.com/exercises/exerciseImages/sequences/4361/Female/l/4361_2.jpg',
         },
-         {
+        {
           workout_name: 'Upper-Chest',
           workout_description: `If you want to sport a powerful, thick, and full chest, then you have to start at the top. In other words, make your upper pecs the top priority.`,
           level: 'Expert',
@@ -47,14 +47,14 @@ exports.seed = function(knex) {
         },
         {
           workout_name: 'Biceps, Triceps and Calves',
-          workout_description: ` This is a workout that allows for a great deal of flexibility on your part with overall structural design` ,
+          workout_description: ` This is a workout that allows for a great deal of flexibility on your part with overall structural design`,
           level: 'Expert',
           image_url:
             'https://www.bodybuilding.com/exercises/exerciseImages/sequences/147/Male/100sq/147_2.jpg',
         },
         {
           workout_name: 'Chest and Triceps',
-          workout_description: ` This is a workout that allows for a great deal of flexibility on your part with overall structural design` ,
+          workout_description: ` This is a workout that allows for a great deal of flexibility on your part with overall structural design`,
           level: 'Expert',
           image_url:
             'https://www.bodybuilding.com/exercises/exerciseImages/sequences/380/Male/100sq/380_2.jpg',
