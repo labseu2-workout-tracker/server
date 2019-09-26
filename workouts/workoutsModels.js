@@ -4,7 +4,12 @@ function findWorkoutById(id) {
   return db('workouts')
     .where({ id })
     .first()
-    .select('workout_name', 'workout_description', 'image_url');
+    .select(
+      'workout_name',
+      'workout_description',
+      'image_url',
+      'level',
+    );
 }
 
 async function findWorkoutExercises(id) {
@@ -24,13 +29,16 @@ async function findWorkoutExercises(id) {
         'exercises.picture_one',
         'exercises.picture_two',
         'exercises.equipment',
+        'workouts.user_id',
       )
       .orderByRaw('position ASC');
   return workout;
 }
 
-function getWorkouts() {
-  return db('workouts');
+function getWorkouts(userId) {
+  return db('workouts').where(function() {
+    this.where('user_id', userId).orWhere('user_id', null);
+  });
 }
 
 async function startWorkoutSession(session) {
@@ -77,7 +85,6 @@ function getWorkoutHistory(userId, dayLimit) {
 
 async function createWorkout(workout, detailedSets) {
   const [newWorkout] = await db('workouts').insert(workout, '*');
-
   detailedSets.forEach(set => {
     // eslint-disable-next-line no-param-reassign
     set.workout_id = newWorkout.id;

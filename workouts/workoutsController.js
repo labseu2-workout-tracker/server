@@ -1,8 +1,9 @@
 const workoutModel = require('./workoutsModels.js');
 
 exports.getAllWorkout = async (req, res) => {
+  const user_id = req.userId;
   try {
-    const workouts = await workoutModel.getWorkouts();
+    const workouts = await workoutModel.getWorkouts(user_id);
     return res.status(200).json(workouts);
   } catch (error) {
     return res.status(500).json({
@@ -105,7 +106,7 @@ exports.createWorkout = async (req, res) => {
     workout_description,
     level,
     image_url,
-    // user_id, <---- This is causing the following error to be thrown in staging - Catched Error { error: column "user_id" of relation "workouts" does not exist
+    user_id,
   };
   try {
     const newWorkoutInfo = await workoutModel.createWorkout(
@@ -119,7 +120,7 @@ exports.createWorkout = async (req, res) => {
     }
     return res.status(201).json(newWorkoutInfo);
   } catch (error) {
-    console.log('Catched Error', error); // <--- This can be removed once the issue with PR 48 has been resolved.
+    console.log(error);
     return res.status(500).json({
       errorMessage: error,
     });
@@ -127,7 +128,8 @@ exports.createWorkout = async (req, res) => {
 };
 
 exports.save_Workouts = async (req, res) => {
-  const { user_id, workouts_id } = req.body;
+  const { workouts_id } = req.body;
+  const user_id = req.userId;
   try {
     const saved = await workoutModel.saveWorkouts(
       user_id,

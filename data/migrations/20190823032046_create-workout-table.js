@@ -7,6 +7,13 @@ exports.up = function(knex) {
       .unique();
     workout.text('workout_description').notNullable();
     workout.string('image_url', 255);
+    workout
+      .integer('user_id')
+      .unsigned()
+      .references('id')
+      .inTable('users')
+      .onUpdate('CASCADE')
+      .onDelete('CASCADE');
     workout.timestamps(true, true);
   });
 };

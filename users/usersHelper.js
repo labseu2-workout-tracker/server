@@ -36,8 +36,9 @@ const validateUser = [
     .trim(),
   check('fullname')
     .isLength({ min: 2 })
+    .matches(/^[a-z\-_\s]+$/i)
     .withMessage(
-      'Please add an alphanumeric fullname with at least 2 characters long.',
+      'Please add a valid fullname with at least 2 characters long.',
     )
     .trim(),
 

@@ -977,22 +977,6 @@ const data = [
   },
   {
     video:
-      'https://videos.bodybuilding.com/video/mp4/118000/119821m.mp4',
-    difficulty: 'Intermediate',
-    picture_one:
-      'https://www.bodybuilding.com/exercises/exerciseImages/sequences/4131/Male/l/4131_1.jpg',
-    picture_two:
-      'https://www.bodybuilding.com/exercises/exerciseImages/sequences/4131/Male/l/4131_2.jpg',
-    description:
-      'Anchor your suspension straps securely to the top of a rack or other object. Grab the handles with an overhand grip and set yourself up in a push-up position so that your body forms a straight line from your shoulders to your ankles. Your arms should be fully extended and your core tight to help maintain proper position. Maintaining a straight, ridged torso, descend slowly by allowing the elbows to flex. Continue until your elbows break 90 degrees, pausing before you extend to return to the starting position.',
-    exercise_ratings: 'n/a',
-    equipment: 'Other',
-    type: 'Strength',
-    muscle: 'Chest',
-    exercise_name: 'Suspended Push-Up',
-  },
-  {
-    video:
       'https://videos.bodybuilding.com/video/mp4/32000/32261m.mp4',
     difficulty: 'Intermediate',
     picture_one:
@@ -1694,22 +1678,6 @@ const data = [
     type: 'Strength',
     muscle: 'Chest',
     exercise_name: 'Dive Bomber Push-Up',
-  },
-  {
-    video:
-      'https://videos.bodybuilding.com/video/mp4/122000/122601m.mp4',
-    difficulty: 'Intermediate',
-    picture_one:
-      'https://www.bodybuilding.com/exercises/exerciseImages/sequences/4641/Male/l/4641_1.jpg',
-    picture_two:
-      'https://www.bodybuilding.com/exercises/exerciseImages/sequences/4641/Male/l/4641_2.jpg',
-    description:
-      'Start by holding a plate with both hands at chest level. Lower yourself down into a kneeling position, and bring the plate behind your head. Take one hand off of the plate and bring it down to the floor to help support your body while you place the weight on your back. Extend your legs back so that you are in a full plank position. Once the plate feels secure on your back, bring your other arm down and place your hands about 36 inches apart. This part can be simplified by having a partner place the weight on your back. This will be your starting position. Lower yourself down until your chest almost touches the floor as you inhale. Next, breathe out and press your upper body back into the starting position. Repeat this pattern for the desired number of repetitions.',
-    exercise_ratings: 'n/a',
-    equipment: 'Other',
-    type: 'Strength',
-    muscle: 'Chest',
-    exercise_name: 'Weighted Push-Up',
   },
   {
     video:
@@ -9474,22 +9442,6 @@ const data = [
     type: 'Strength',
     muscle: 'Triceps',
     exercise_name: 'Triceps Overhead Extension with Rope',
-  },
-  {
-    video:
-      'https://videos.bodybuilding.com/video/mp4/116000/117801m.mp4',
-    difficulty: 'Beginner',
-    picture_one:
-      'https://www.bodybuilding.com/exercises/exerciseImages/sequences/3341/Male/l/3341_2.jpg',
-    picture_two:
-      'https://www.bodybuilding.com/exercises/exerciseImages/sequences/3341/Male/l/3341_1.jpg',
-    description:
-      'Load the bar to an appropriate weight for your training. Lay on the bench with your feet flat on the ground, driving through with your hips. Your back should be arched and your shoulder blades retracted. Take a medium pronated grip, covering the rings on the bar. Remove the bar from the rack, holding the weight above your clavicle with your arms extended. This will be your starting position. Lower the bar by displacing your elbows forward. The bar should only move vertically, making the exercise resemble a hybrid bench press and skull-crusher. Lower the weight but stop short of allowing it to touch your chest, then return the bar to the starting position.',
-    exercise_ratings: 'n/a',
-    equipment: 'Barbell',
-    type: 'Strength',
-    muscle: 'Triceps',
-    exercise_name: 'JM Press',
   },
   {
     video:
