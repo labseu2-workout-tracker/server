@@ -176,7 +176,6 @@ exports.workoutExists = async (req, res) => {
     const checkWorkoutName = await workoutModel.workoutExists(
       workout_name,
     );
-    console.log(checkWorkoutName);
     if (!checkWorkoutName.length) {
       return res.status(200).json({
         success: 'Go Ahead',
