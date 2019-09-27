@@ -65,6 +65,10 @@ function findWorkoutSessionByUserId(userId) {
     .whereNull('session_end');
 }
 
+function workoutExists(name) {
+  return db('workouts').where({ workout_name: name });
+}
+
 function getWorkoutHistory(userId, dayLimit) {
   // if dayLimit is provided, multiply the days by 86400000 milliseconds
   // subtract the result from the current day's JS Date value
@@ -142,4 +146,5 @@ module.exports = {
   saveWorkouts,
   getSavedWorkouts,
   deleteSavedWorkout,
+  workoutExists,
 };

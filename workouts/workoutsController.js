@@ -169,3 +169,25 @@ exports.del_saved_workout = async (req, res) => {
     return res.status(500).json({ errorMessage: error });
   }
 };
+
+exports.workoutExists = async (req, res) => {
+  const { workout_name } = req.body;
+  try {
+    const checkWorkoutName = await workoutModel.workoutExists(
+      workout_name,
+    );
+    console.log(checkWorkoutName);
+    if (!checkWorkoutName.length) {
+      return res.status(200).json({
+        success: 'Go Ahead',
+      });
+    }
+    return res.status(400).json({
+      errorMessage: 'Workout name already exist',
+    });
+  } catch (error) {
+    return res.status(500).json({
+      errorMessage: error,
+    });
+  }
+};

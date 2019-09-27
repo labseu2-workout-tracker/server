@@ -63,4 +63,10 @@ router.delete(
   workoutsController.del_saved_workout,
 );
 
+router.post(
+  '/exists',
+  checkLoggedIn,
+  workoutsController.workoutExists,
+);
+
 module.exports = router;
