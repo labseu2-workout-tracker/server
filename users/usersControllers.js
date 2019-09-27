@@ -9,7 +9,7 @@ exports.signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 12);
     const credentials = {
       username,
-      email,
+      email: email.toLowerCase(),
       password: hashedPassword,
       fullname,
     };
@@ -53,7 +53,7 @@ exports.login = async (req, res) => {
           'Oops, email and password is required for login.',
       });
     }
-    const user = await User.findBy({ email });
+    const user = await User.findBy({ email: email.toLowerCase(), });
     if (user && bcrypt.compareSync(password, user.password)) {
       return res.status(200).json({
         token: generateToken(user.email, user.id),
